@@ -1,0 +1,52 @@
+.recap {
+  background-color: $white;
+  padding-bottom: 160px;
+}
+
+.recap > .row {
+  display: flex;
+
+  justify-content: space-around;
+}
+
+.recap-card {
+  display: flex;
+  flex-direction: column;
+
+  padding: 0;
+
+  justify-content: center;
+
+  max-width: $recap-card-max-width;
+  height: $recap-card-height;
+}
+
+.recap-picture {
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+
+  flex-grow: 1;
+  color: $main-color;
+
+
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  font-size: $recap-picture-font-size;
+}
+
+.recap-title {
+  height: 120px;
+
+  background-color: $body-background-color;
+  color: $chapter-text-content;
+  font-family: 'Lato';
+  font-size: 1.25em;
+  font-weight: 300;
+  @media (min-width: map-get($grid-breakpoints, sm)) {
+    font-size: 1.5em;
+  }
+}
