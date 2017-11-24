@@ -9,6 +9,7 @@
 
   justify-content: space-between;
   align-items: center;
+  // margin-bottom: 700px;
 }
 
 .chap-1-carousel-pic-display {
@@ -23,11 +24,12 @@
 
 .chap-1-carousel-desc-display {
   display: flex;
+  justify-content: center;
   align-items: center;
   position: absolute;
   top: 75%;
   left: -5%;
-  @include size(170px);
+  @include size(120px);
   padding-right: map-get($spacers, 3);
   padding-left: map-get($spacers, 3);
 
@@ -74,27 +76,55 @@
 }
 
 .chap-1-carousel-thumbnails {
+  position: relative;
+  padding: 0;
+  margin: 0;
   display: inline-flex;
   flex-wrap: nowrap;
   align-items: center;
+
+}
+
+.carousel-padding {
+  border-top: $chap1-link-line-thickness solid $main-color;
+  // height: ($chap1-carousel-thumbnail-height + $chap1-link-line-thickness) / 2;
+  position: absolute;
+  bottom: 0;
+
+  width: 100%;
+  z-index: 10;
 }
 
 .carousel-thumbnail-pic {
-  width: 20vw;
-  height: 13.5vw;
+  z-index: 20;
+  width: $chap1-carousel-thumbnail-width;
+  height: $chap1-carousel-thumbnail-height;
   background-image: url('https://picsum.photos/1300/280/?random');
   background-size: cover;
+}
+
+.thumbnail-filter {
+  height: 100%;
+  width: 100%;
+  background-color: $main-color-transparent;
+  &.active {
+    background: none;
+  }
 }
 
 .carousel-thumbnail-link {
   padding: 0 !important;
   margin: 0 !important;
-  > svg {
-    padding: 0;
-    margin: 0;
-    width: 65px;
-    height: 12px;
-    fill: $main-color;
-    border: none !important;
-  }
+  width: 5 * $chap1-carousel-dot-link-diameter;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
 }
+
+.carousel-link-dot {
+  @include size($chap1-carousel-dot-link-diameter);
+  border-radius: 50%;
+  background-color: $main-color;
+}
+

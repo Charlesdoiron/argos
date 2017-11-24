@@ -68,7 +68,7 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(1);
-module.exports = __webpack_require__(4);
+module.exports = __webpack_require__(5);
 
 
 /***/ }),
@@ -155,16 +155,29 @@ carouselThumbnailsWidth += parseFloat(window.getComputedStyle(carouselThumbnailD
 
 /*----------------- chapter1 clearfix -----------------*/
 
-const carouselDisplay = document.querySelector('.chap-1-carousel-display');
-const carouselThumbnailsContainer = document.querySelector('.chap-1-carousel-thumbnails-container');
+const carouselPicDisplay = document.querySelector('.chap-1-carousel-pic-display');
 const carouselDisplayDesc = document.querySelector('.chap-1-carousel-desc-display');
 
-const carouselDisplayDescOverflow =
-  parseFloat(window.getComputedStyle(carouselDisplayDesc).getPropertyValue('top').replace('px','')) +
-  parseFloat(window.getComputedStyle(carouselDisplayDesc).getPropertyValue('height').replace('px','')) -
-  parseFloat(window.getComputedStyle(carouselDisplay).getPropertyValue('height').replace('px',''));
+const displayDescTop = carouselDisplayDesc.getBoundingClientRect().top - carouselPicDisplay.getBoundingClientRect().top;
+const displayDescHeight =  carouselDisplayDesc.getBoundingClientRect().height;
+const displayHeight = carouselPicDisplay.getBoundingClientRect().height;
 
-carouselDisplay.style.marginBottom = `${carouselDisplayDescOverflow * 1.2}px`
+const carouselDisplayDescOverflow = displayDescTop + displayDescHeight - displayHeight;
+const carouselDescDisplay = document.querySelector('.chap-1-carousel-desc-display').firstElementChild;
+
+carouselPicDisplay.parentElement.style.marginBottom = `${carouselDisplayDescOverflow * 1.3}px`;
+
+/*----------------- chapter1 link-line position -----------------*/
+
+const carouselFisrtThumbnail = document.querySelector("[data-thumbnail='1']");
+const carouselThumbnailPadding = document.querySelector('.carousel-padding');
+
+const linkLineThickness = 1;
+const linkLineTopPosition = (carouselFisrtThumbnail.getBoundingClientRect().height + linkLineThickness) / 2;
+
+
+carouselThumbnailPadding.style.height = `${linkLineTopPosition}px`
+carouselThumbnailPadding.style.borderTopWidth = `${linkLineThickness}px`
 
 
 
@@ -175,8 +188,9 @@ carouselDisplay.style.marginBottom = `${carouselDisplayDescOverflow * 1.2}px`
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_dragscroll__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_dragscroll__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_dragscroll___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_dragscroll__);
+
 
 
 //If no-JS, keep scrollbar. If JS, remove scrollbar in CSS do this script.
@@ -188,8 +202,20 @@ const carouselContainer = document.querySelector('.chap-1-carousel-thumbnails-co
 const carouselContent = document.querySelector('.chap-1-carousel-thumbnails');
 const carouselDisplay = document.querySelector('.chap-1-carousel-display');
 const carouselPicDisplay = document.querySelector('.chap-1-carousel-pic-display');
-const carouselDescDisplay = document.querySelector('.chap-1-carousel-desc-display');
+const carouselDescDisplay = document.querySelector('.chap-1-carousel-desc-display').firstElementChild;
 const carouselThumbnails = [...document.querySelectorAll('.carousel-thumbnail-pic')];
+const carouselFirstThumbnail = carouselThumbnails[0];
+const carouselLastThumbnail = carouselThumbnails[carouselThumbnails.length - 1];
+const thumbnailWidth = Math.round(parseFloat(window.getComputedStyle(carouselFirstThumbnail).getPropertyValue('width').replace('px', '')) * 100 / window.innerWidth);
+const carouselMargin = (100 - thumbnailWidth) / 2;
+const dotlinkWidth = Math.round(parseFloat(window.getComputedStyle(document.querySelector('#first-link')).getPropertyValue('width').replace('px', '')) * 100 / window.innerWidth);
+const arrowRightChap1 = document.querySelector('#chap-1-arrow-right');
+const arrowLeftChap1 = document.querySelector('#chap-1-arrow-left');
+let carouselMoving;
+
+
+carouselFirstThumbnail.style.marginLeft = `${carouselMargin}vw`;
+carouselLastThumbnail.style.marginRight = `${carouselMargin}vw`;
 
 let carouselContentObjects = [];
 
@@ -242,12 +268,12 @@ carouselContainer.addEventListener("scroll", function() {
 
 /*-------------- Load Carousel --------------*/
 
+//Create carousel object content
 for (let i = 0; i < carouselThumbnails.length; i++) {
   carouselContentObjects[i+1] = {
     name: `item-${i+1}`,
     pictureUrl: `https://picsum.photos/200/300?image=${i+1}`,
     description: `description ${i+1}`
-
   };
 }
 
@@ -259,40 +285,135 @@ let currentDisplayedIndex;
 
 function initCarousel (index) {
   carouselPicDisplay.style.backgroundImage = `url(${carouselContentObjects[index].pictureUrl})`;
-  carouselDescDisplay.firstElementChild.innerHTML = `${carouselContentObjects[index].description}`;
+  carouselDescDisplay.textContent = `${carouselContentObjects[index].description}`;
   currentDisplayedIndex = index;
+  document.querySelector(`[data-thumbnail='${currentDisplayedIndex}']`).firstElementChild.classList.add('active');
 }
 initCarousel(1);
 
 //This variable to check wether the user clicked or dragged.
-let carouselScrollY = carouselContainer.scrollLeft;
-let carouselScrollX = carouselContainer.scrollRight;
-  const transitionDuration = 300;
+let carouselScrollLeft = carouselContainer.scrollLeft;
+const transitionDuration = 500;
 
-function loadCarousel (e) {
+
+
+/*---------- IF CLICKED ON A THUMBNAIL ---------------*/
+function clickingOnThumbnail (e) {
+  const thumbnailClicked = e.target.parentElement;
+  const clickedIndex = thumbnailClicked.dataset.thumbnail;
   //If carouselContainer.scrollLeft > carouselScroll, the user dragged, didn't clicked.
   //User clicked if carouselScroll == carouselContainer.scrollLeft. Then we change the picture.
-  if (currentDisplayedIndex != e.target.dataset.thumbnail && carouselScroll == carouselContainer.scrollLeft && e.target.classList.contains('carousel-thumbnail-pic')) {
-    //Picture first
-    carouselPicDisplay.style.backgroundImage = window.getComputedStyle(e.target).getPropertyValue('background-image');
-    carouselPicDisplay.style.transition = `all ${transitionDuration}ms`;
-    //Description
-    carouselDescDisplay.firstElementChild.style.transition = `all ${transitionDuration / 2}ms`;
-    carouselDescDisplay.firstElementChild.style.opacity = 0;
-    window.setTimeout(() => {
-    carouselDescDisplay.firstElementChild.textContent = `${carouselContentObjects[e.target.dataset.thumbnail].description}`;
-    carouselDescDisplay.firstElementChild.style.opacity = 1;
-    }, transitionDuration / 2);
-  }
+  const changeIndex = currentDisplayedIndex != clickedIndex;
+  const noScroll = carouselScrollLeft == carouselContainer.scrollLeft;
+  const noScrollAccident = (Math.abs(carouselScrollLeft - carouselContainer.scrollLeft) < 10);
+  const clickedIsThumbnail = e.target.parentElement.classList.contains('carousel-thumbnail-pic');
 
-  //We update carouselScroll
-  carouselScrollY = carouselContainer.scrollLeft;
-  carouselScrollX = carouselContainer.scrollRight;
-  currentDisplayedIndex = e.target.dataset.thumbnail;
+  if (!(changeIndex && (noScroll || noScrollAccident) && clickedIsThumbnail)) {
+    //If dragged and not clicked, update carouselScroll only
+    carouselScrollLeft = carouselContainer.scrollLeft;
+  } else {
+    loadCarousel(thumbnailClicked, clickedIndex);
+  }
 }
 
-carouselContainer.addEventListener('mouseup', loadCarousel)
+/*---------- IF CLICKED ON THE ARROWS ---------------*/
 
+function clickingOnArrow () {
+  console.log(arrowLeftChap1);
+  window.cancelAnimationFrame(carouselMoving);
+  if ((this === arrowRightChap1 && currentDisplayedIndex >= carouselThumbnails.length) || (this === arrowLeftChap1 && currentDisplayedIndex <= 1)) {
+    return;
+  } else if (this === arrowRightChap1) {
+    const thumbnailClicked = carouselThumbnails[(currentDisplayedIndex - 1) + 1];
+    const clickedIndex = thumbnailClicked.dataset.thumbnail;
+    loadCarousel(thumbnailClicked, clickedIndex);
+  } else if (this === arrowLeftChap1) {
+    const thumbnailClicked = carouselThumbnails[(currentDisplayedIndex - 1) - 1];
+    const clickedIndex = thumbnailClicked.dataset.thumbnail;
+    loadCarousel(thumbnailClicked, clickedIndex);
+  }
+}
+
+
+/*---------- LOAD CAROUSEL ---------------*/
+function loadCarousel (thumbnailClicked, clickedIndex) {
+
+  //Picture first
+  carouselPicDisplay.style.backgroundImage = window.getComputedStyle(thumbnailClicked).getPropertyValue('background-image');
+  carouselPicDisplay.style.transition = `all ${transitionDuration}ms`;
+  //Remove old description
+  carouselDescDisplay.style.transition = `all ${transitionDuration / 2}ms`;
+  carouselDescDisplay.style.opacity = 0;
+  //Filters
+  const filterPreviousThumbnail = document.querySelector(`[data-thumbnail='${currentDisplayedIndex}']`).firstElementChild;
+  const filterNextThumbnail = document.querySelector(`[data-thumbnail='${clickedIndex}']`).firstElementChild;
+  filterPreviousThumbnail.classList.toggle('active');
+  filterPreviousThumbnail.style.transition = `all ${transitionDuration}ms`;
+  filterNextThumbnail.classList.add('active');
+  filterNextThumbnail.style.transition = `all ${transitionDuration}ms`;
+
+  //Description treatment with timeout
+  window.setTimeout(() => {
+    // Show new description
+    carouselDescDisplay.textContent = `${carouselContentObjects[clickedIndex].description}`;
+    carouselDescDisplay.style.opacity = 1;
+    //Update idnex of thumbnail shown
+    currentDisplayedIndex = clickedIndex;
+  }, transitionDuration / 2);
+
+  /*------------ Scroll to the thumbnail -----------------*/
+  //0-1 - Get the values from unit vw to px (javascript doesn't understand vw or vh)
+  const vwToPx = window.innerWidth / 100;
+  //0-2 - Get the future final position of the thumbnail scrolling
+  const newScrollPosition = Math.round(((clickedIndex - 1) * (thumbnailWidth + dotlinkWidth)) * vwToPx)
+  //0-3 - Get the total distance to scroll (negative or positive)
+  const toScroll = newScrollPosition - carouselContainer.scrollLeft;
+  //0-4 - This value is actually giving the transitionDuration its real duration. The value is based on the time intervals requestAnimationFrame is called.
+  const timeScale = 50;
+  //0-5 - Init variable to check if the scrolling is over or not
+  let scrollIsUpToDate = false;
+  //0-6 - Init variable to record how much has been scrolled yet
+  let scrolled;
+
+  //Speed calculation to have an ease-in and ease-out transition
+  function scrollSpeed (alreadyScrolled) {
+    //Equation du second degré : on veut une fonction en -x2 pour laquelle f(0) = 0, f(toScroll) = 0, f(toScroll/2) = maxSpeed
+    const maxSpeed = toScroll / transitionDuration;
+    return 3 * maxSpeed / toScroll * alreadyScrolled * (1 - alreadyScrolled / toScroll);
+  }
+
+  //Because RequestAnimationFrame works only if we 'do something' while we work
+  function resetScrollUpadte () {
+    //6 - Scrolling is over ?
+    scrollIsUpToDate = (carouselContainer.scrollLeft == newScrollPosition);
+    //7 - Updated the scroll position of the carousel
+    carouselScrollLeft = carouselContainer.scrollLeft;
+    //8 - Move the carousel again
+    repositionCarousel();
+  }
+
+  //Function to rescroll the Carousel
+  function repositionCarousel() {
+    // 2 - If the carousel is all scrolled, nothing to do anymore
+    if (scrollIsUpToDate) {
+      return;
+    }
+    //3 - Set or update the scrolled value
+    (toScroll - (newScrollPosition - carouselScrollLeft)) === 0 ? scrolled = 1 : scrolled = (toScroll - (newScrollPosition - carouselScrollLeft));
+    //4 - Increment the scroll : 1 px. If less, we force the move.
+    Math.abs(scrollSpeed(scrolled) * timeScale) < 1 ? carouselContainer.scrollLeft += (Math.abs(toScroll) / toScroll) : carouselContainer.scrollLeft += scrollSpeed(scrolled) * timeScale;
+    //5 - We go to resetScrollUpdate and redo repositionCarousel over and over again and again
+    carouselMoving = window.requestAnimationFrame(resetScrollUpadte);
+  };
+  //1 - We launch the reposition of the carousel
+  repositionCarousel();
+}
+
+
+
+carouselContainer.addEventListener('click', clickingOnThumbnail)
+arrowRightChap1.addEventListener('click', clickingOnArrow)
+arrowLeftChap1.addEventListener('click', clickingOnArrow)
 
 
 
@@ -302,22 +423,18 @@ carouselContainer.addEventListener('mouseup', loadCarousel)
 
 /***/ }),
 /* 4 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 5 */,
-/* 6 */,
-/* 7 */,
-/* 8 */,
-/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!function(e,n){ true?!(__WEBPACK_AMD_DEFINE_ARRAY__ = [exports], __WEBPACK_AMD_DEFINE_FACTORY__ = (n),
 				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
 				(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)):n("undefined"!=typeof exports?exports:e.dragscroll={})}(this,function(e){var n,t,o=window,l=document,c="mousemove",r="mouseup",i="mousedown",m="EventListener",d="add"+m,s="remove"+m,f=[],u=function(e,m){for(e=0;e<f.length;)m=f[e++],m=m.container||m,m[s](i,m.md,0),o[s](r,m.mu,0),o[s](c,m.mm,0);for(f=[].slice.call(l.getElementsByClassName("dragscroll")),e=0;e<f.length;)!function(e,m,s,f,u,a){(a=e.container||e)[d](i,a.md=function(n){e.hasAttribute("nochilddrag")&&l.elementFromPoint(n.pageX,n.pageY)!=a||(f=1,m=n.clientX,s=n.clientY,n.preventDefault())},0),o[d](r,a.mu=function(){f=0},0),o[d](c,a.mm=function(o){f&&((u=e.scroller||e).scrollLeft-=n=-m+(m=o.clientX),u.scrollTop-=t=-s+(s=o.clientY),e==l.body&&((u=l.documentElement).scrollLeft-=n,u.scrollTop-=t))},0)}(f[e++])};"complete"==l.readyState?u():o[d]("load",u,0),e.reset=u});
+
+/***/ }),
+/* 5 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
 
 /***/ })
 /******/ ]);
