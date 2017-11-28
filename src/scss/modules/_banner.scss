@@ -28,9 +28,7 @@
     background-image: url('../img/hero-base.png');
     background-repeat: no-repeat;
     background-size: cover;
-
-    background-position: center;
-
+    background-position: center; // border: 1px solid #000;
 }
 
 .logo {
@@ -66,4 +64,3 @@
         font-size: 2.5em;
     }
 }
-
