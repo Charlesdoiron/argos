@@ -1,11 +1,13 @@
 .recap {
-  background-color: $white;
-  padding-bottom: 160px;
+    background-color: $white;
+    padding-bottom: 160px;
 }
 
 .recap>.row {
+
   display: flex;
   justify-content: space-around;
+
 }
 
 .changeHeight{
@@ -14,6 +16,7 @@
 }
 
 .recap-card {
+
   display: flex;
   flex-direction: column;
   padding: 0;
@@ -43,27 +46,30 @@
     color:$third-color;
     transition: all 1s;
   }
+
 }
 
 .recap-picture {
-  display: flex;
+    display: flex;
 
-  justify-content: center;
-  align-items: center;
+    justify-content: center;
+    align-items: center;
 
-  flex-grow: 1;
-  color: $main-color;
+    flex-grow: 1;
+    color: $main-color;
 
 
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
 
-  font-size: $recap-picture-font-size;
+    font-size: $recap-picture-font-size;
 }
 
 .recap-title {
+
   transition: all 1s;
+
   height: 120px;
   background-color: $body-background-color;
   color: $chapter-text-content;
@@ -74,3 +80,4 @@
     font-size: 1.38em;
   }
 }
+

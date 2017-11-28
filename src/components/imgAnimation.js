@@ -2,7 +2,7 @@
 
 
 window.addEventListener('scroll', () => {
-  const recapPictures = document.querySelectorAll('.recap-card');
+const recapPictures = document.querySelectorAll('.recap-card');
   recapPictures.forEach((picture) => {
     if ((window.innerWidth > 1100) && (window.scrollY <= 500)) {
       picture.classList.remove('changeHeight')
@@ -10,6 +10,7 @@ window.addEventListener('scroll', () => {
       picture.classList.add('changeHeight')
     }
   })
+
 });
 
 
@@ -34,6 +35,7 @@ window.addEventListener('scroll', () => {
 
 
 window.addEventListener('load', () => {
+
   const logo = document.querySelector('.logo')
   const slogan = document.querySelector('.slogan')
   const volet = document.querySelector('.volet')
@@ -55,4 +57,3 @@ window.addEventListener('load', () => {
   }
 }, 1600);
   })
-
