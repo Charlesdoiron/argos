@@ -18,7 +18,6 @@
   max-width: $chap1-carousel-pic-display-max-width;
   height: 0.78 * $chap1-carousel-pic-display-width;
   max-height: 0.78 * $chap1-carousel-pic-display-max-width;
-  background-image: url('https://picsum.photos/1300/280/?random');
   background-size: cover;
 }
 
@@ -29,14 +28,16 @@
   position: absolute;
   top: 75%;
   left: -5%;
-  @include size(120px);
+  width: 240px;
+  height: 120px;
   padding-right: map-get($spacers, 3);
   padding-left: map-get($spacers, 3);
 
-  @media (min-width: map-get($grid-breakpoints, md)) {
+  @media (min-width: map-get($grid-breakpoints, sm)) {
     top: 56.5%;
     left: -11.54%;
-    @include size(250px);
+    width: 350px;
+    height: 200px;
     padding: 0;
   }
 
@@ -56,6 +57,8 @@
   font-weight: 100;
   line-height: 1em;
   color: $main-color;
+  transition: all $transition-duration ease-in-out;
+
   @media (min-width: map-get($grid-breakpoints, lg)) {
    padding-right: map-get($spacers, 5);
    padding-left: map-get($spacers, 5);
@@ -98,15 +101,31 @@
 .carousel-thumbnail-pic {
   z-index: 20;
   width: $chap1-carousel-thumbnail-width;
+  max-width: $chap1-carousel-thumbnail-max-width;
   height: $chap1-carousel-thumbnail-height;
+  max-height: $chap1-carousel-thumbnail-max-height;
   background-image: url('https://picsum.photos/1300/280/?random');
   background-size: cover;
 }
 
+
 .thumbnail-filter {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  //align-items: center;
+  align-content: center;
+  > span {
+  color: $black-russian;
+   width: 100%;
+   background-color: $white;
+   text-align: center;
+   text-transform: uppercase;
+  }
   height: 100%;
   width: 100%;
-  background-color: $main-color-transparent;
+  background-color: $thumbnail-filter-color;
   &.active {
     background: none;
   }
@@ -124,11 +143,9 @@
 
 .carousel-link-dot {
   @include size($chap1-carousel-dot-link-diameter);
+  max-width: $chap1-carousel-dot-link-max-diameter;
+  max-height: $chap1-carousel-dot-link-max-diameter;
   border-radius: 50%;
   background-color: $main-color;
 }
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 49a3a09a7ce4e8d76f6629d87897b61c502112e3

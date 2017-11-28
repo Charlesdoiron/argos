@@ -4,9 +4,10 @@
 }
 
 .recap>.row {
-    display: flex;
 
-    justify-content: space-around;
+  display: flex;
+  justify-content: space-around;
+
 }
 
 .changeHeight{
@@ -15,24 +16,37 @@
 }
 
 .recap-card {
-    display: flex;
-    flex-direction: column;
-    padding: 0;
-    justify-content: center;
-    max-width: $recap-card-max-width;
-    /*  height: $recap-card-height;*/
-    height: 120px;
-    transition: all 1s;
-   transform: translateY(0);
+
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  justify-content: center;
+  width: 90%;
+  height: 120px;
+  transition: all 1s;
+  transform: translateY(0);
+  max-width: $recap-card-max-width;
+}
+
+.multiple-cards {
+  display: flex;
+
+  justify-content: space-around;
+  //align-items: center;
+  //align-content: center;
+
+  padding: 0;
+
 }
 .recap-card:hover{
-    box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+  box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+  transition: all 1s;
+  transform: translateY(-4px);
+  .recap-title{
+    color:$third-color;
     transition: all 1s;
-    transform: translateY(-4px);
-    .recap-title{
-      color:$third-color;
-      transition: all 1s;
-    }
+  }
+
 }
 
 .recap-picture {
@@ -53,28 +67,17 @@
 }
 
 .recap-title {
-<<<<<<< HEAD
-  transition: all 1s;
-    height: 120px;
-    background-color: $body-background-color;
-    color: $chapter-text-content;
-    font-family: 'Lato';
-    font-size: 1.25em;
-    font-weight: 300;
-    @media (min-width: map-get($grid-breakpoints, sm)) {
-        font-size: 1.5em;
-    }
-}
-=======
-  height: 120px;
 
+  transition: all 1s;
+
+  height: 120px;
   background-color: $body-background-color;
   color: $chapter-text-content;
   font-family: 'Lato';
   font-size: 1.25em;
   font-weight: 300;
-  @media (min-width: map-get($grid-breakpoints, sm)) {
-    font-size: 1.35em;
+  @media (min-width: map-get($grid-breakpoints, xl)) {
+    font-size: 1.38em;
   }
 }
->>>>>>> 49a3a09a7ce4e8d76f6629d87897b61c502112e3
+

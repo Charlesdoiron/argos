@@ -1,5 +1,5 @@
 
-..const webpack = require('webpack');
+const webpack = require('webpack');
 const nodeEnv = process.env.NODE_ENV || 'production';
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var BrowserSyncPlugin = require('browser-sync-webpack-plugin');

@@ -1,6 +1,6 @@
 * {
   box-sizing: border-box;
-  border: 1px solid #000;
+  // border: 1px solid #000;
 }
 
 
@@ -18,7 +18,7 @@ body {
   }
 }
 
-h1 {
+h2 {
   color: $h1-color;
   font-family: 'Museo';
   font-size: 2.5em;
@@ -26,15 +26,16 @@ h1 {
   font-weight: 500;
   padding-right: map-get($spacers, 2);
   padding-left: map-get($spacers, 2);
+  transition: all $transition-duration ease-in-out;
 
-  @media (min-width: map-get($grid-breakpoints, sm)) {
+  @media (min-width: map-get($grid-breakpoints, md)) {
     padding-right: map-get($spacers, 5);
     padding-left: map-get($spacers, 5);
     font-size: 4em;
   }
 }
 
-h2 {
+h3 {
   font-size: 1.5em;
   font-family:'Lato';
   font-weight: 400;
@@ -43,8 +44,10 @@ h2 {
 
   padding-right: map-get($spacers, 2);
   padding-left: map-get($spacers, 2);
+  transition: all $transition-duration ease-in-out;
 
-  @media (min-width: map-get($grid-breakpoints, sm)) {
+
+  @media (min-width: map-get($grid-breakpoints, md)) {
     padding-right: map-get($spacers, 5);
     padding-left: map-get($spacers, 5);
     font-size: 2.5em;
@@ -58,19 +61,23 @@ p {
   font-family: 'Lato';
   font-size: 1em;
   font-weight: 300;
-  @media (min-width: map-get($grid-breakpoints, sm)) {
+  transition: all $transition-duration ease-in-out;
+
+  @media (min-width: map-get($grid-breakpoints, md)) {
    padding-right: map-get($spacers, 5);
    padding-left: map-get($spacers, 5);
    font-size: 1.5em;
  }
 }
 
-h3 {
+h4 {
   color: $h3-color;
   font-family: 'Lato';
   font-size: 1em;
   font-weight: 300;
   text-transform: uppercase;
+  transition: all $transition-duration ease-in-out;
+
   @media (min-width: map-get($grid-breakpoints, sm)) {
    padding-right: map-get($spacers, 5);
    padding-left: map-get($spacers, 5);
@@ -82,6 +89,8 @@ h5 {
   font-family: 'Lato';
   font-weight: 600;
   font-size: 1em;
+  transition: all $transition-duration ease-in-out;
+
   @media (min-width: map-get($grid-breakpoints, sm)) {
    padding-right: map-get($spacers, 5);
    padding-left: map-get($spacers, 5);

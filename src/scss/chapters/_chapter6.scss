@@ -117,16 +117,21 @@
   > .sub2 {
     display: flex;
     justify-content: space-between;
+    text-align: center;
+    transition: all $transition-duration ease-in-out;
 
-    > .sub-sub2 {
+    @media (min-width: map-get($grid-breakpoints, sm)) {
       text-align: right;
-
+      :first-child {
+        text-align: left;
+      }
     }
   }
 }
 
 .more-infos-sub-sub > a {
   color: $secondary-color;
+
 }
 
 .challengers-prez-picture {
