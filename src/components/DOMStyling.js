@@ -57,6 +57,7 @@ carouselThumbnailsWidth += parseFloat(window.getComputedStyle(carouselThumbnailD
 
 /*----------------- chapter1 clearfix -----------------*/
 
+function chap1Clearfix (){
 const carouselPicDisplay = document.querySelector('.chap-1-carousel-pic-display');
 const carouselDisplayDesc = document.querySelector('.chap-1-carousel-desc-display');
 
@@ -67,19 +68,37 @@ const displayHeight = carouselPicDisplay.getBoundingClientRect().height;
 const carouselDisplayDescOverflow = displayDescTop + displayDescHeight - displayHeight;
 const carouselDescDisplay = document.querySelector('.chap-1-carousel-desc-display').firstElementChild;
 
-carouselPicDisplay.parentElement.style.marginBottom = `${carouselDisplayDescOverflow * 1.3}px`;
+carouselPicDisplay.parentElement.style.marginBottom = `${carouselDisplayDescOverflow * 2}px`;
+}
+chap1Clearfix()
 
 /*----------------- chapter1 link-line position -----------------*/
 
+function repositionLink () {
 const carouselFisrtThumbnail = document.querySelector("[data-thumbnail='1']");
 const carouselThumbnailPadding = document.querySelector('.carousel-padding');
-
 const linkLineThickness = 1;
 const linkLineTopPosition = (carouselFisrtThumbnail.getBoundingClientRect().height + linkLineThickness) / 2;
 
-
 carouselThumbnailPadding.style.height = `${linkLineTopPosition}px`
 carouselThumbnailPadding.style.borderTopWidth = `${linkLineThickness}px`
+}
 
-
+repositionLink ();
 export { chapterTitles,  chap6DivOverflowed, carouselThumbnailsWidth }
+
+/*----------------- chapter1 padding left and right -----------------*/
+
+function recalculatePaddingCarousel () {
+const carouselFirstThumbnail = document.querySelector('#first-thumbnail');
+const carouselLastThumbnail = document.querySelector('#last-thumbnail');
+const thumbnailWidth = Math.round(parseFloat(window.getComputedStyle(carouselFirstThumbnail).getPropertyValue('width').replace('px', '')) * 100 / window.innerWidth);
+const carouselMargin = (100 - thumbnailWidth) / 2;
+carouselFirstThumbnail.style.marginLeft = `${carouselMargin}vw`;
+carouselLastThumbnail.style.marginRight = `${carouselMargin}vw`;
+}
+
+recalculatePaddingCarousel ();
+window.addEventListener('resize', recalculatePaddingCarousel);
+window.addEventListener('resize', repositionLink);
+window.addEventListener('resize', chap1Clearfix);
