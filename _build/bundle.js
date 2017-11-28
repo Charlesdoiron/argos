@@ -68,7 +68,7 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(1);
-module.exports = __webpack_require__(4);
+module.exports = __webpack_require__(6);
 
 
 /***/ }),
@@ -79,10 +79,19 @@ module.exports = __webpack_require__(4);
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__DOMStyling__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Chap1Carousel__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__robot__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__robot___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__robot__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__imgAnimation__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__imgAnimation___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__imgAnimation__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__navbar__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__navbar___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__navbar__);
 // import { uniq } from 'lodash';
 // import jsonp from 'jsonp';
 // import insane from 'insane';
 // import 'bootstrap';
+
+
+
 
 
 
@@ -175,7 +184,7 @@ carouselDisplay.style.marginBottom = `${carouselDisplayDescOverflow * 1.2}px`
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_dragscroll__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_dragscroll__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_dragscroll___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_dragscroll__);
 
 
@@ -302,22 +311,121 @@ carouselContainer.addEventListener('mouseup', loadCarousel)
 
 /***/ }),
 /* 4 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 5 */,
-/* 6 */,
-/* 7 */,
-/* 8 */,
-/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!function(e,n){ true?!(__WEBPACK_AMD_DEFINE_ARRAY__ = [exports], __WEBPACK_AMD_DEFINE_FACTORY__ = (n),
 				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
 				(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)):n("undefined"!=typeof exports?exports:e.dragscroll={})}(this,function(e){var n,t,o=window,l=document,c="mousemove",r="mouseup",i="mousedown",m="EventListener",d="add"+m,s="remove"+m,f=[],u=function(e,m){for(e=0;e<f.length;)m=f[e++],m=m.container||m,m[s](i,m.md,0),o[s](r,m.mu,0),o[s](c,m.mm,0);for(f=[].slice.call(l.getElementsByClassName("dragscroll")),e=0;e<f.length;)!function(e,m,s,f,u,a){(a=e.container||e)[d](i,a.md=function(n){e.hasAttribute("nochilddrag")&&l.elementFromPoint(n.pageX,n.pageY)!=a||(f=1,m=n.clientX,s=n.clientY,n.preventDefault())},0),o[d](r,a.mu=function(){f=0},0),o[d](c,a.mm=function(o){f&&((u=e.scroller||e).scrollLeft-=n=-m+(m=o.clientX),u.scrollTop-=t=-s+(s=o.clientY),e==l.body&&((u=l.documentElement).scrollLeft-=n,u.scrollTop-=t))},0)}(f[e++])};"complete"==l.readyState?u():o[d]("load",u,0),e.reset=u});
+
+/***/ }),
+/* 5 */
+/***/ (function(module, exports) {
+
+// POSITION ROBOT
+
+	const circle = document.querySelector('.robot-circle');
+    const width = parseFloat(window.getComputedStyle(circle).getPropertyValue('width').replace('px', ''));
+    const height = parseFloat(window.getComputedStyle(circle).getPropertyValue('height').replace('px', ''));
+    const robotImg = document.querySelector('.robot-img');
+    const top = parseFloat(window.getComputedStyle(circle).getPropertyValue('top').replace('px', ''));
+    circle.style.height = `${width}px`;
+
+window.addEventListener('resize', () => {
+    const circle = document.querySelector('.robot-circle');
+    const width = parseFloat(window.getComputedStyle(circle).getPropertyValue('width').replace('px', ''));
+    const height = parseFloat(window.getComputedStyle(circle).getPropertyValue('height').replace('px', ''));
+    const robotImg = document.querySelector('.robot-img');
+    const top = parseFloat(window.getComputedStyle(circle).getPropertyValue('top').replace('px', ''));
+    circle.style.height = `${width}px`;
+});
+
+
+
+/***/ }),
+/* 6 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 7 */,
+/* 8 */,
+/* 9 */,
+/* 10 */
+/***/ (function(module, exports) {
+
+// RECAP CARDS ANIMATION
+
+
+window.addEventListener('scroll', () => {
+    const recapPictures = document.querySelectorAll('.recap-card');
+    recapPictures.forEach((picture) => {
+        if (window.scrollY <= 500) {
+            console.log('good');
+            picture.classList.remove('changeHeight')
+        } else {
+            picture.classList.add('changeHeight')
+        }
+    })
+});
+
+
+// function debounce (func, wait = 20, immediate = true){
+// 	var timeout;
+// 	return function() {
+// 		var context = this, args = arguments;
+// 		var later = function(){
+// 			timeout = null;
+// 			if (!immediate) func.apply(context, args);
+// 		};
+// 		var callNow = immediate && !timeout;
+// 		clearTimeout(timeout);
+// 		timeout = setTimeout(later, wait);
+// 		if(callNow) func.apply(context; args);
+// 	};
+// };
+
+
+// OPEN ANIMATION
+
+
+
+window.addEventListener('load', () => {
+    const logo = document.querySelector('.logo')
+    const slogan = document.querySelector('.slogan')
+    const volet = document.querySelector('.volet')
+    const logoBlack = document.querySelector('.logo-black')
+    setInterval(function(){ 
+     volet.classList.add('voletAnim1')
+	}, 100);
+	   setInterval(function(){ 
+     volet.classList.add('voletAnim2')
+	}, 1000);
+    setInterval(function(){ 
+    	logo.classList.add('appear')
+    	slogan.classList.add('toOrigin')
+	}, 1600);
+})
+
+
+
+/***/ }),
+/* 11 */
+/***/ (function(module, exports) {
+
+// BURGER
+
+	const burger = document.querySelector('.burger')
+	burger.addEventListener('click', () => {
+		if(burger.classList.contains('burger')){
+			burger.classList.remove('burger')
+			burger.classList.add('burger-is-open')
+		}else{
+			burger.classList.remove('burger-is-open')
+			burger.classList.add('burger')
+		}
+	})
 
 /***/ })
 /******/ ]);
