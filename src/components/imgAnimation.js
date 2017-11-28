@@ -2,15 +2,15 @@
 
 
 window.addEventListener('scroll', () => {
-    const recapPictures = document.querySelectorAll('.recap-card');
-    recapPictures.forEach((picture) => {
-        if (window.scrollY <= 500) {
-            console.log('good');
-            picture.classList.remove('changeHeight')
-        } else {
-            picture.classList.add('changeHeight')
-        }
-    })
+const recapPictures = document.querySelectorAll('.recap-card');
+  recapPictures.forEach((picture) => {
+    if ((window.innerWidth > 1100) && (window.scrollY <= 500)) {
+      picture.classList.remove('changeHeight')
+    } else {
+      picture.classList.add('changeHeight')
+    }
+  })
+
 });
 
 
@@ -35,19 +35,25 @@ window.addEventListener('scroll', () => {
 
 
 window.addEventListener('load', () => {
-    const logo = document.querySelector('.logo')
-    const slogan = document.querySelector('.slogan')
-    const volet = document.querySelector('.volet')
-    const logoBlack = document.querySelector('.logo-black')
-    setInterval(function(){ 
-     volet.classList.add('voletAnim1')
-	}, 100);
-	   setInterval(function(){ 
-     volet.classList.add('voletAnim2')
-	}, 1000);
-    setInterval(function(){ 
-    	logo.classList.add('appear')
-    	slogan.classList.add('toOrigin')
-	}, 1600);
-})
 
+  const logo = document.querySelector('.logo')
+  const slogan = document.querySelector('.slogan')
+  const volet = document.querySelector('.volet')
+  const logoBlack = document.querySelector('.logo-black')
+  const recapPictures = document.querySelectorAll('.recap-card');
+  setInterval(function(){
+   volet.classList.add('voletAnim1');
+ }, 100);
+  setInterval(function(){
+   volet.classList.add('voletAnim2');
+ }, 1000);
+  setInterval(function(){
+   logo.classList.add('appear');
+   slogan.classList.add('toOrigin');
+   if (window.innerWidth < 1100) {
+    recapPictures.forEach((picture) => {
+      picture.classList.add('changeHeight');
+    })
+  }
+}, 1600);
+  })

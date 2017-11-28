@@ -13,24 +13,67 @@ const carouselPicDisplay = document.querySelector('.chap-1-carousel-pic-display'
 const carouselDescDisplay = document.querySelector('.chap-1-carousel-desc-display').firstElementChild;
 const carouselThumbnails = [...document.querySelectorAll('.carousel-thumbnail-pic')];
 const carouselFirstThumbnail = carouselThumbnails[0];
-const carouselLastThumbnail = carouselThumbnails[carouselThumbnails.length - 1];
-const thumbnailWidth = Math.round(parseFloat(window.getComputedStyle(carouselFirstThumbnail).getPropertyValue('width').replace('px', '')) * 100 / window.innerWidth);
-const carouselMargin = (100 - thumbnailWidth) / 2;
-const dotlinkWidth = Math.round(parseFloat(window.getComputedStyle(document.querySelector('#first-link')).getPropertyValue('width').replace('px', '')) * 100 / window.innerWidth);
+let thumbnailWidth;
+let dotlinkWidth;
+
 const arrowRightChap1 = document.querySelector('#chap-1-arrow-right');
 const arrowLeftChap1 = document.querySelector('#chap-1-arrow-left');
 let carouselMoving;
+let clickedIndex = 0;
+let counterScroll;
 
+let carouselContentObjects = [
+{
+  date: `Décembre 2013`,
+  pictureUrl: `../src/img/chap-1-carouselpic-1.jpg`,
+  description: `Lancement de l’appel à projet international`
+},
+{
+  date: `Juin 2014`,
+  pictureUrl: `../src/img/chap-1-carouselpic-2.jpg`,
+  description: `Sélection des cinq équipes parmi 31 dossiers de candidature`
+},
+{
+  date: `Septembre 2014`,
+  pictureUrl: `../src/img/chap-1-carouselpic-3.jpg`,
+  description: `Lancement officiel du Challenge ARGOS`
+},
+{
+  date: `Septembre 2014`,
+  pictureUrl: `../src/img/chap-1-carouselpic-4.jpg`,
+  description: `Réunions techniques et visite du site de compétition avec les équipes sélectionnées`
+},
+{
+  date: `Avril 2015`,
+  pictureUrl: `../src/img/chap-1-carouselpic-5.jpg`,
+  description: `Semaine d’entraînement sur le site de compétition à Lacq (Sud Ouest de la France)`
+},
+{
+  date: `Juin 2015`,
+  pictureUrl: `../src/img/chap-1-carouselpic-6.jpg`,
+  description: `1ère compétition : des résultats prometteurs en navigation autonome`
+},
+{
+  date: `Avril 2016`,
+  pictureUrl: `../src/img/chap-1-carouselpic-7.jpg`,
+  description: `2ème compétition : confronter les robots à la réalité du terrain`
+},
+{
+  date: `Mars 2017`,
+  pictureUrl: `../src/img/chap-1-carouselpic-8.jpg`,
+  description: `3ème compétition : opérer en toute sécurité sur un site industriel`
+},
+{
+  date: `Mai 2017`,
+  pictureUrl: `../src/img/chap-1-carouselpic-9.jpg`,
+  description: `Cérémonie de remise des trophées. ARGONAUTS (Autriche/Allemagne) remporte le Challenge ARGOS`
+},
 
-carouselFirstThumbnail.style.marginLeft = `${carouselMargin}vw`;
-carouselLastThumbnail.style.marginRight = `${carouselMargin}vw`;
-
-let carouselContentObjects = [];
+];
 
 
 /*----------------- Scroll and drag and hide scrollbar of carousel ----------------*/
 //We imported drascroll which makes almost all the business...
-
 
 function determineOverflow(content, container) {
   const containerMetrics = container.getBoundingClientRect();
@@ -59,6 +102,7 @@ let last_known_scroll_position = 0;
 let ticking = false;
 
 function doSomething(scroll_pos) {
+
   carouselContainer.setAttribute("data-overflowing", determineOverflow(carouselContent, carouselContainer));
 }
 
@@ -77,16 +121,11 @@ carouselContainer.addEventListener("scroll", function() {
 /*-------------- Load Carousel --------------*/
 
 //Create carousel object content
-for (let i = 0; i < carouselThumbnails.length; i++) {
-  carouselContentObjects[i+1] = {
-    name: `item-${i+1}`,
-    pictureUrl: `https://picsum.photos/200/300?image=${i+1}`,
-    description: `description ${i+1}`
-  };
-}
 
 for (var i = 0; i < carouselThumbnails.length; i++) {
-  carouselThumbnails[i].style.backgroundImage = `url(${carouselContentObjects[i+1].pictureUrl})`;
+  carouselThumbnails[i].style.backgroundImage = `url(${carouselContentObjects[i].pictureUrl})`;
+  console.log(carouselThumbnails[i].firstElementChild.firstElementChild)
+  carouselThumbnails[i].firstElementChild.firstElementChild.textContent = carouselContentObjects[i].date;
 }
 
 let currentDisplayedIndex;
@@ -94,21 +133,29 @@ let currentDisplayedIndex;
 function initCarousel (index) {
   carouselPicDisplay.style.backgroundImage = `url(${carouselContentObjects[index].pictureUrl})`;
   carouselDescDisplay.textContent = `${carouselContentObjects[index].description}`;
-  currentDisplayedIndex = index;
+  currentDisplayedIndex = index + 1;
   document.querySelector(`[data-thumbnail='${currentDisplayedIndex}']`).firstElementChild.classList.add('active');
 }
-initCarousel(1);
+initCarousel(0);
+
+function adaptCarouselToWindowSize() {
+  thumbnailWidth = Math.round(parseFloat(window.getComputedStyle(carouselFirstThumbnail).getPropertyValue('width').replace('px', '')) * 100 / window.innerWidth);
+  dotlinkWidth = Math.round(parseFloat(window.getComputedStyle(document.querySelector('#first-link')).getPropertyValue('width').replace('px', '')) * 100 / window.innerWidth);
+  const vwToPx = window.innerWidth / 100;
+  const newScrollPosition = Math.round(((currentDisplayedIndex - 1) * (thumbnailWidth + dotlinkWidth)) * vwToPx);
+  carouselContainer.scrollLeft = newScrollPosition;
+}
+adaptCarouselToWindowSize();
 
 //This variable to check wether the user clicked or dragged.
 let carouselScrollLeft = carouselContainer.scrollLeft;
 const transitionDuration = 500;
 
 
-
 /*---------- IF CLICKED ON A THUMBNAIL ---------------*/
 function clickingOnThumbnail (e) {
   const thumbnailClicked = e.target.parentElement;
-  const clickedIndex = thumbnailClicked.dataset.thumbnail;
+  clickedIndex = thumbnailClicked.dataset.thumbnail;
   //If carouselContainer.scrollLeft > carouselScroll, the user dragged, didn't clicked.
   //User clicked if carouselScroll == carouselContainer.scrollLeft. Then we change the picture.
   const changeIndex = currentDisplayedIndex != clickedIndex;
@@ -127,28 +174,36 @@ function clickingOnThumbnail (e) {
 /*---------- IF CLICKED ON THE ARROWS ---------------*/
 
 function clickingOnArrow () {
-  console.log(arrowLeftChap1);
   window.cancelAnimationFrame(carouselMoving);
+  console.log(`clickedIndex-beforeClickArrow: ${clickedIndex}`);
+  console.log(`currentDisplayedIndex-beforeClickArrow: ${currentDisplayedIndex}`);
   if ((this === arrowRightChap1 && currentDisplayedIndex >= carouselThumbnails.length) || (this === arrowLeftChap1 && currentDisplayedIndex <= 1)) {
     return;
   } else if (this === arrowRightChap1) {
-    const thumbnailClicked = carouselThumbnails[(currentDisplayedIndex - 1) + 1];
-    const clickedIndex = thumbnailClicked.dataset.thumbnail;
-    loadCarousel(thumbnailClicked, clickedIndex);
+console.log('flèche droite')
+    const thumbnailClicked = carouselThumbnails[((clickedIndex === 0 ? currentDisplayedIndex - 1 : clickedIndex - 1)) + 1];
+    console.log(`thumbnailClicked.dataset.thumbnail: ${thumbnailClicked.dataset.thumbnail}`);
+    loadCarousel(thumbnailClicked, thumbnailClicked.dataset.thumbnail);
   } else if (this === arrowLeftChap1) {
-    const thumbnailClicked = carouselThumbnails[(currentDisplayedIndex - 1) - 1];
-    const clickedIndex = thumbnailClicked.dataset.thumbnail;
-    loadCarousel(thumbnailClicked, clickedIndex);
+console.log('flèche gauche')
+    const thumbnailClicked = carouselThumbnails[((clickedIndex === 0 ? currentDisplayedIndex - 1 : clickedIndex - 1)) - 1];
+    console.log(`thumbnailClicked.dataset.thumbnail: ${thumbnailClicked.dataset.thumbnail}`);
+    loadCarousel(thumbnailClicked, thumbnailClicked.dataset.thumbnail);
   }
 }
 
 
 /*---------- LOAD CAROUSEL ---------------*/
-function loadCarousel (thumbnailClicked, clickedIndex) {
+function loadCarousel (thumbnailClicked, parameterClickedIndex) {
+  counterScroll = 0;
 
+  clickedIndex = parameterClickedIndex;
+  const startingDate = Date.now();
+
+  window.cancelAnimationFrame(carouselMoving);
   //Picture first
   carouselPicDisplay.style.backgroundImage = window.getComputedStyle(thumbnailClicked).getPropertyValue('background-image');
-  carouselPicDisplay.style.transition = `all ${transitionDuration}ms`;
+  carouselPicDisplay.style.transition = `background-image ${transitionDuration}ms`;
   //Remove old description
   carouselDescDisplay.style.transition = `all ${transitionDuration / 2}ms`;
   carouselDescDisplay.style.opacity = 0;
@@ -163,7 +218,7 @@ function loadCarousel (thumbnailClicked, clickedIndex) {
   //Description treatment with timeout
   window.setTimeout(() => {
     // Show new description
-    carouselDescDisplay.textContent = `${carouselContentObjects[clickedIndex].description}`;
+    carouselDescDisplay.textContent = `${carouselContentObjects[clickedIndex - 1].description}`;
     carouselDescDisplay.style.opacity = 1;
     //Update idnex of thumbnail shown
     currentDisplayedIndex = clickedIndex;
@@ -176,6 +231,7 @@ function loadCarousel (thumbnailClicked, clickedIndex) {
   const newScrollPosition = Math.round(((clickedIndex - 1) * (thumbnailWidth + dotlinkWidth)) * vwToPx)
   //0-3 - Get the total distance to scroll (negative or positive)
   const toScroll = newScrollPosition - carouselContainer.scrollLeft;
+  // console.log(`toScroll: ${toScroll}`);
   //0-4 - This value is actually giving the transitionDuration its real duration. The value is based on the time intervals requestAnimationFrame is called.
   const timeScale = 50;
   //0-5 - Init variable to check if the scrolling is over or not
@@ -200,14 +256,19 @@ function loadCarousel (thumbnailClicked, clickedIndex) {
     repositionCarousel();
   }
 
+
+
   //Function to rescroll the Carousel
   function repositionCarousel() {
+    counterScroll++;
     // 2 - If the carousel is all scrolled, nothing to do anymore
     if (scrollIsUpToDate) {
+      //Rest clickedIndex to allow scrolling
+      clickedIndex = 0;
       return;
     }
     //3 - Set or update the scrolled value
-    (toScroll - (newScrollPosition - carouselScrollLeft)) === 0 ? scrolled = 1 : scrolled = (toScroll - (newScrollPosition - carouselScrollLeft));
+    counterScroll === 1 ? scrolled = 1 : scrolled = (toScroll - (newScrollPosition - carouselScrollLeft));
     //4 - Increment the scroll : 1 px. If less, we force the move.
     Math.abs(scrollSpeed(scrolled) * timeScale) < 1 ? carouselContainer.scrollLeft += (Math.abs(toScroll) / toScroll) : carouselContainer.scrollLeft += scrollSpeed(scrolled) * timeScale;
     //5 - We go to resetScrollUpdate and redo repositionCarousel over and over again and again
@@ -222,6 +283,8 @@ function loadCarousel (thumbnailClicked, clickedIndex) {
 carouselContainer.addEventListener('click', clickingOnThumbnail)
 arrowRightChap1.addEventListener('click', clickingOnArrow)
 arrowLeftChap1.addEventListener('click', clickingOnArrow)
+
+window.addEventListener('resize', adaptCarouselToWindowSize)
 
 
 

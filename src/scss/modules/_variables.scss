@@ -6,11 +6,14 @@ $recap-card-height: 320px;
 $chap1-carousel-pic-display-width: 83vw;
 $chap1-carousel-pic-display-max-width: 520px;
 $chap1-carousel-thumbnail-width: 40vw;
+$chap1-carousel-thumbnail-max-width: 320px;
 $chap1-carousel-thumbnail-height: $chap1-carousel-thumbnail-width * 13.5 / 20;
+$chap1-carousel-thumbnail-max-height: $chap1-carousel-thumbnail-max-width * 13.5 / 20;
 $chap1-carousel-dot-link-diameter: $chap1-carousel-thumbnail-width / 20;
+$chap1-carousel-dot-link-max-diameter: 20px;
 $chap1-link-line-thickness: 0.2vw;
 $bio-boss-pic-diameter: 200px;
-$recap-card-max-width: 310px;
+$recap-card-max-width: 320px;
 $chap-number-card-height: $recap-card-height;
 $chap-classic-pic-height: 450px;
 $chap-6-pic-width: 80vw;
@@ -18,16 +21,19 @@ $chap-6-pic-height: $chap-6-pic-width / 2;
 $chap-6-persons-offset: 0.15 * $chap-6-pic-height;
 $chap-6-persons-arrow: 15px;
 $chap6-challenger-height: 400px;
+$transition-duration: 0.5s;
 
 /* --- Colors --- */
 $black-russian: #121113;
 $dark-grey: rgba(83,83,83,1.00);
 $middle-grey: rgba(117,114,114,1.00);
 $light-grey: lighten($middle-grey, 30%);
-$main-color: rgba(255,166,88,1.00);
-$main-color-transparent: rgba(255,166,88,0.80);
-$secondary-color: rgba(228,44,47,1.00);
-$third-color : #F46F70;
+
+$main-color: #DB7E04;
+$main-color-transparent: $main-color;
+$secondary-color: #DF0C36;
+$third-color : #DB7E04;
+
 $white: rgba(255,255,255,1.00);
 $h1-color: $main-color;
 $h2-color: $dark-grey;
@@ -36,6 +42,7 @@ $chapter-text-content: $dark-grey;
 $body-background-color-dev: rgba(213,213,213,1.00);
 $body-background-color: rgba(250,250,250,1.00);
 $chap-text-carousel-color: rgba(117,114,114,1.00);
+$thumbnail-filter-color: rgba(240,240,240,0.6);
 
 /* --- Fonts --- */
 
