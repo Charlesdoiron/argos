@@ -1,6 +1,6 @@
 * {
   box-sizing: border-box;
-  // border: 1px solid #000;
+  border: 1px solid #000;
 }
 
 
@@ -8,6 +8,14 @@
 body {
   background-color: $body-background-color;
   font-family: 'Lato';
+
+  -webkit-overflow-scrolling: touch;
+  .js & {
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
 }
 
 h1 {

@@ -53,6 +53,7 @@
 }
 
 .recap-title {
+<<<<<<< HEAD
   transition: all 1s;
     height: 120px;
     background-color: $body-background-color;
@@ -64,3 +65,16 @@
         font-size: 1.5em;
     }
 }
+=======
+  height: 120px;
+
+  background-color: $body-background-color;
+  color: $chapter-text-content;
+  font-family: 'Lato';
+  font-size: 1.25em;
+  font-weight: 300;
+  @media (min-width: map-get($grid-breakpoints, sm)) {
+    font-size: 1.35em;
+  }
+}
+>>>>>>> 49a3a09a7ce4e8d76f6629d87897b61c502112e3

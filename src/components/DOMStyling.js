@@ -57,16 +57,29 @@ carouselThumbnailsWidth += parseFloat(window.getComputedStyle(carouselThumbnailD
 
 /*----------------- chapter1 clearfix -----------------*/
 
-const carouselDisplay = document.querySelector('.chap-1-carousel-display');
-const carouselThumbnailsContainer = document.querySelector('.chap-1-carousel-thumbnails-container');
+const carouselPicDisplay = document.querySelector('.chap-1-carousel-pic-display');
 const carouselDisplayDesc = document.querySelector('.chap-1-carousel-desc-display');
 
-const carouselDisplayDescOverflow =
-  parseFloat(window.getComputedStyle(carouselDisplayDesc).getPropertyValue('top').replace('px','')) +
-  parseFloat(window.getComputedStyle(carouselDisplayDesc).getPropertyValue('height').replace('px','')) -
-  parseFloat(window.getComputedStyle(carouselDisplay).getPropertyValue('height').replace('px',''));
+const displayDescTop = carouselDisplayDesc.getBoundingClientRect().top - carouselPicDisplay.getBoundingClientRect().top;
+const displayDescHeight =  carouselDisplayDesc.getBoundingClientRect().height;
+const displayHeight = carouselPicDisplay.getBoundingClientRect().height;
 
-carouselDisplay.style.marginBottom = `${carouselDisplayDescOverflow * 1.2}px`
+const carouselDisplayDescOverflow = displayDescTop + displayDescHeight - displayHeight;
+const carouselDescDisplay = document.querySelector('.chap-1-carousel-desc-display').firstElementChild;
+
+carouselPicDisplay.parentElement.style.marginBottom = `${carouselDisplayDescOverflow * 1.3}px`;
+
+/*----------------- chapter1 link-line position -----------------*/
+
+const carouselFisrtThumbnail = document.querySelector("[data-thumbnail='1']");
+const carouselThumbnailPadding = document.querySelector('.carousel-padding');
+
+const linkLineThickness = 1;
+const linkLineTopPosition = (carouselFisrtThumbnail.getBoundingClientRect().height + linkLineThickness) / 2;
+
+
+carouselThumbnailPadding.style.height = `${linkLineTopPosition}px`
+carouselThumbnailPadding.style.borderTopWidth = `${linkLineThickness}px`
 
 
 export { chapterTitles,  chap6DivOverflowed, carouselThumbnailsWidth }
