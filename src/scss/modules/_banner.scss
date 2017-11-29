@@ -1,10 +1,5 @@
-.volet{
-  height: 100vh;
-  width: 100%;
-  background-color: $black-russian;
-  position: absolute;
-  z-index: 2;
-}
+
+
 .logo-black {
     position: absolute;
     top: 50vh;
@@ -22,6 +17,7 @@
     transition: all 1s;
     z-index: 3;
 }
+
 .banner {
     position: relative;
     height: 51.3vw;
@@ -30,7 +26,6 @@
     background-size: cover;
 
     background-position: center;
-
 }
 
 .logo {
@@ -66,4 +61,3 @@
         font-size: 2.5em;
     }
 }
-
