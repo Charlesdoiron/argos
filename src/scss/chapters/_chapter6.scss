@@ -26,7 +26,7 @@
     position: absolute;
     top: -$chap-6-pic-height / 3;
 
-    background-image: url('https://picsum.photos/1300/280/?random');
+    background-image: url('../img/chap-6-banner.png');
     background-size: cover;
 
   }
@@ -87,11 +87,25 @@
 }
 
 .person-job-title {
+  max-width: 150px;
   color: $secondary-color;
 }
 
-.person-picture > img {
+.person-picture {
+  @include size(80px);
   border-radius: 50%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  &.left {
+    background-image: url('../img/chap-6-matthias_biegl.jpg');
+  }
+
+  &.right {
+    background-image: url('../img/chap-6-alain_goulois.jpg');
+  }
+  // border: 1px solid #000;
 }
 
 .person-description{
@@ -136,7 +150,7 @@
 
 .challengers-prez-picture {
   height: $chap-6-pic-height;
-  background-image: url('https://picsum.photos/1300/280/?random');
+  background-image: url('../img/chap-6-banner-2.jpg');
   background-size: cover;
 
   font-family: 'Museo';
@@ -154,9 +168,20 @@
 }
 
 .challengers-prez-desc {
+  min-height: 20%;
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+  //align-content: center;
+
+
   margin-top: -$chap-6-persons-offset;
   background-color: $white;
   > p {
+    padding: 0;
+    margin: 0;
+    width: 80%;
     color: $light-grey;
   }
 }

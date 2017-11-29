@@ -124,7 +124,6 @@ carouselContainer.addEventListener("scroll", function() {
 
 for (var i = 0; i < carouselThumbnails.length; i++) {
   carouselThumbnails[i].style.backgroundImage = `url(${carouselContentObjects[i].pictureUrl})`;
-  console.log(carouselThumbnails[i].firstElementChild.firstElementChild)
   carouselThumbnails[i].firstElementChild.firstElementChild.textContent = carouselContentObjects[i].date;
 }
 

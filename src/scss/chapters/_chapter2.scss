@@ -14,12 +14,18 @@
       display: flex;
       flex-direction: column;
 
-      justify-content: flex-start;
+      justify-content: space-between;
       align-items: center;
 
       background-color: $white;
 
       > .chap-number-number {
+        display: flex;
+
+        //justify-content: center;
+        align-items: center;
+        //align-content: center;
+
         height: $chap-number-card-height *2 / 3;
         font-family: 'Museo 700';
         font-size: 200px;
@@ -28,8 +34,20 @@
       }
 
       > .chap-number-description {
+        display: flex;
+        flex-grow: 1;
+        flex-direction: column;
+        justify-content: center;
+        //align-items: center;
+        //align-content: center;
+
         text-align: center;
       }
     }
   }
+}
+
+.chap-banner.chap-2 {
+  background-image: url('../img/chap-2-banner.jpg');
+  height: 70vw;
 }
