@@ -181,6 +181,28 @@ chapterTitles.forEach(chapterTitle => {
     CHAPTER 6
     \*------------------------------------*/
 
+    const challengerPics = [...document.querySelectorAll('.challenger-pic')]
+
+    const challengerPictures = [
+    {
+      backgroundPicture:  `url('./src/img/chap-6-team-1.jpg')`
+    },
+    {
+      backgroundPicture:  `url('./src/img/chap-6-team-2.jpg')`
+    },
+    {
+      backgroundPicture:  `url('./src/img/chap-6-team-3.jpg')`
+    },
+    {
+      backgroundPicture:  `url('./src/img/chap-6-team-4.jpg')`
+    }
+    ]
+
+    challengerPics.forEach(challengerPic => {
+      challengerPic.style.backgroundImage = challengerPictures[challengerPics.indexOf(challengerPic)].backgroundPicture;
+    });
+
+
 
     /*-------------------- chapter6 clearfix -------------*/
 
