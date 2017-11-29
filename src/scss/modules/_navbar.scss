@@ -1,9 +1,17 @@
 .navbar {
     height: 90px;
-    background-color: $white;
+    background-color: rgba(235,235,235,0.5);
     line-height: 90px;
+    position: fixed;
+    top: -50%;
+    width: 100%;
 }
 
+.appearNav {
+    z-index: 26;
+    top: 0;
+    transition: all 2s;
+}
 .burger {
     background-repeat: no-repeat;
     background-size: contain;
@@ -14,6 +22,7 @@
     height: 25px;
     width: 50px;
     position: relative;
+    cursor: pointer;
 }
 
 .burger-is-open {
@@ -26,4 +35,73 @@
     height: 35px;
     width: 50px;
     position: relative;
+    cursor: pointer;
+}
+
+.volet {
+    height: 100vh;
+    width: 100%;
+    background-color: $black-russian;
+    position: absolute;
+    z-index: 23;
+}
+
+/*MENU*/
+
+.menu {
+    height: 100vh;
+    background-color: $secondary-color;
+    padding-top: 4vh;
+    width: 50vw;
+    transition: all 2s;
+    transition-timing-function: ease;
+    transition-duration: 2s;
+    transform: translateX(200%);
+    position: fixed;
+    padding-top: 15vh;
+    z-index: 25;
+    li{
+        list-style: none;
+        text-transform: uppercase;
+        text-align: right;
+        margin-right: 90px;
+        line-height: 9vh;
+        font-size: 30px;
+     a {
+        color: #FFF;
+        transition: all 1s;
+    }
+    a:hover{
+        text-decoration: none !important;
+        letter-spacing: 1px;
+        transition: all 1s;
+    }
+    }
+   
+}
+.menu.is-active {
+    transition: all 2s;
+    transform: translateX(100%);
+}
+
+.social{
+    color: #FFF;
+    text-align: center;
+    display: flex;
+    justify-content: space-evenly;
+    width: 60%;
+    margin: 0 auto;
+}
+.toTop{
+        position: fixed;
+    bottom: 0;
+    right: 0;
+    z-index: 21;
+      cursor: pointer;
+    margin-bottom: 20px;
+    margin-right:20px;
+    color: #000;
+    a{
+        color: #000;
+    }
 }

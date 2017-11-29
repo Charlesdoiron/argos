@@ -14,22 +14,6 @@ const recapPictures = document.querySelectorAll('.recap-card');
 });
 
 
-// function debounce (func, wait = 20, immediate = true){
-// 	var timeout;
-// 	return function() {
-// 		var context = this, args = arguments;
-// 		var later = function(){
-// 			timeout = null;
-// 			if (!immediate) func.apply(context, args);
-// 		};
-// 		var callNow = immediate && !timeout;
-// 		clearTimeout(timeout);
-// 		timeout = setTimeout(later, wait);
-// 		if(callNow) func.apply(context; args);
-// 	};
-// };
-
-
 // OPEN ANIMATION
 
 
@@ -41,12 +25,16 @@ window.addEventListener('load', () => {
   const volet = document.querySelector('.volet')
   const logoBlack = document.querySelector('.logo-black')
   const recapPictures = document.querySelectorAll('.recap-card');
+  const navbar = document.querySelector('.navbar');
   setInterval(function(){
    volet.classList.add('voletAnim1');
  }, 100);
   setInterval(function(){
    volet.classList.add('voletAnim2');
  }, 1000);
+    setInterval(function(){
+   navbar.classList.add('appearNav');
+ }, 1800);
   setInterval(function(){
    logo.classList.add('appear');
    slogan.classList.add('toOrigin');
