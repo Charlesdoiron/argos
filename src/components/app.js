@@ -4,6 +4,7 @@
 // import 'bootstrap';
 import './DOMStyling';
 import './Chap1Carousel';
+import './Chap5Carousel';
 import './robot';
 import './imgAnimation';
 import './navbar'

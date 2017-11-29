@@ -21,9 +21,9 @@
   justify-content: center;
   align-items: center;
 
-  background-size: cover;
+  background-size: contain;
   background-repeat: no-repeat;
-  background-position: center;
+
 
   opacity:0;
   transition:all .5s;
@@ -37,9 +37,17 @@
 
 .slider-left {
   transform:translateX(-30%) scale(0.95);
+  background-position: center;
+  @media (min-width: map-get($grid-breakpoints, md)) {
+  background-position: left;
+  }
 }
 .slider-right {
   transform:translateX(30%) scale(0.95);
+  background-position: center;
+  @media (min-width: map-get($grid-breakpoints, md)) {
+  background-position: right;
+  }
 }
 
 .active {

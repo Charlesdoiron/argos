@@ -8,14 +8,15 @@
 body {
   background-color: $body-background-color;
   font-family: 'Lato';
+  overflow-x: hidden;
 
-  -webkit-overflow-scrolling: touch;
-  .js & {
-    -ms-overflow-style: -ms-autohiding-scrollbar;
-    &::-webkit-scrollbar {
-      display: none;
-    }
-  }
+  // -webkit-overflow-scrolling: touch;
+  // .js & {
+  //   -ms-overflow-style: -ms-autohiding-scrollbar;
+  //   &::-webkit-scrollbar {
+  //     display: none;
+  //   }
+  // }
 }
 
 h2 {
