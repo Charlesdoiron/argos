@@ -5,6 +5,7 @@
 import './DOMStyling';
 import './Chap1Carousel';
 import './Chap5Carousel';
+import './Chap5BisCarousel';
 import './robot';
 import './imgAnimation';
 import './navbar'

@@ -20,11 +20,20 @@ body {
 
 }
 
-a:hover{
-text-decoration: none !important;}
+a {
+  color: inherit;
+
+  text-decoration: none !important;
+  :hover{
+  color: inherit;
+    text-decoration: none !important;
+  }
+}
+
+
 h2 {
   color: $h1-color;
-  font-family: 'Museo';
+  font-family: 'Lato';
   font-size: 2.5em;
   line-height: 1em;
   font-weight: 500;
@@ -100,6 +109,10 @@ h5 {
    padding-left: map-get($spacers, 5);
    font-size: 1.5em;
  }
+}
+
+.italic {
+  font-style: italic;
 }
 
 

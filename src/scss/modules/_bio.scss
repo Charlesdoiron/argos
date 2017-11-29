@@ -19,7 +19,7 @@
   flex-direction: column;
   justify-content: flex-start;
 
-   @media (min-width: map-get($grid-breakpoints, sm)) {
+  @media (min-width: map-get($grid-breakpoints, sm)) {
     margin-top: -20px;
   }
 
@@ -43,6 +43,7 @@
 
 .guillemet {
   display: flex;
+  justify-content: flex-start;
 
   > svg {
     height: 50px;
@@ -51,12 +52,12 @@
     }
   }
 
-  &.guillemet-debut {
-    justify-content: flex-start;
-  }
 
   &.guillemet-fin {
     justify-content: flex-end;
+    @media (min-width: map-get($grid-breakpoints, xl)) {
+      justify-content: flex-start;
+    }
   }
 }
 

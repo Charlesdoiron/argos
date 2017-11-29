@@ -2,7 +2,7 @@
 
 .chap-2 {
   > .chap-title, .chap-text-content {
-    background-color: $white;
+    // background-color: $white;
   }
 
   > .chap-numbers {
@@ -49,5 +49,5 @@
 
 .chap-banner.chap-2 {
   background-image: url('../img/chap-2-banner.jpg');
-  height: 70vw;
+  height: 60vw;
 }

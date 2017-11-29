@@ -1,0 +1,47 @@
+footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  //align-content: center;
+
+  > * {
+    text-decoration: none;
+    color: $white;
+  }
+  height: 250px;
+  width: 100%;
+  background-color: $secondary-color;
+}
+
+.social-links {
+  display: flex;
+
+  justify-content: space-between;
+  //align-items: center;
+  //align-content: center;
+
+}
+
+.social-link {
+  cursor: pointer;
+}
+
+.copyright {
+  font-size: 0.75em;
+  letter-spacing: 2px;
+}
+
+.signature {
+  width: 100%;
+  display: flex;
+
+  justify-content: flex-end;
+
+  > * {
+    color: $white;
+  }
+  //align-items: center;
+  //align-content: center;
+
+}

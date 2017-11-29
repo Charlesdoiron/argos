@@ -10,23 +10,33 @@
 
   justify-content: center;
 
-  width: 100vw;
+  width: 100%;
   color: $middle-grey;
   font-size: 2em;
   line-height: 1.5em;
   font-weight: 500;
   text-align: center;
   text-transform: uppercase;
+
+  &.chap-5-bis {
+    color: $secondary-color;
+    text-transform: none;
+  }
+}
+.chap-5-bis {
+  color: $secondary-color;
+  text-transform: none;
 }
 
-.chap-text-carousel-main-container {
+.chap-text-carousel-main-container, {
   display: flex;
 
   justify-content: space-between;
   align-items: center;
 
-  > .chap-5-carousel-arrow {
+  > .chap-5-carousel-arrow, {
     display: flex;
+    cursor: pointer;
 
     align-content: center;
 
@@ -35,7 +45,28 @@
   }
 }
 
-.chap-text-carousel-container {
+.chap-5-bis-text-carousel-main-container {
+  display: flex;
+  width: 100%;
+  margin: 0;
+
+  justify-content: space-between;
+  align-items: center;
+
+  background-color: $body-background-color;
+
+  > .chap-5-bis-carousel-arrow, {
+    display: flex;
+    cursor: pointer;
+
+    align-content: center;
+
+    font-size: 7em;
+    font-weight: 100;
+  }
+}
+
+.chap-text-carousel-container  {
   display: inline-flex;
   width: 100%;
   overflow-x: auto;
@@ -49,13 +80,32 @@
   }
 }
 
+.chap-text-5-bis-carousel-container  {
+
+  display: inline-flex;
+  width: 80%;
+  overflow-x: auto;
+
+  -webkit-overflow-scrolling: touch;
+  .js & {
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+}
+
+
 .chap-5-text-carousel-subcontainer {
+
+
   display: flex;
   flex-direction: column;
   align-items: center;
   flex-shrink: 0;
   flex-grow: 0;
   flex-basis: 100%;
+  background-color: $white;
 
   > span {
     color: $middle-grey;
@@ -68,4 +118,65 @@
     color: $light-grey;
     text-align: center;
   }
+}
+
+.chap-5-bis-text-carousel-subcontainer {
+  padding: map-get($spacers, 3);
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex-shrink: 0;
+  flex-grow: 0;
+  flex-basis: 100%;
+  background-color: $white;
+
+  > p.title {
+    text-align: left;
+    padding-bottom: map-get($spacers, 5);
+    color: $black-russian;
+    font-weight: 500;
+  }
+
+  > p {
+    text-align: left;
+
+    color: $black-russian;
+    text-align: left;
+  }
+}
+
+.container-buttons {
+  display: flex;
+  margin: 0;
+  padding: 0;
+
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  width: 100%;
+  background-color: $body-background-color;
+  > ul {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    list-style: none;
+
+    justify-content: space-between;
+
+    > li {
+      @include size($chap1-carousel-dot-link-diameter);
+      border-radius: 50%;
+      background-color: $thumbnail-filter-color;
+      cursor: pointer;
+    }
+
+    //justify-content: center;
+    //align-items: center;
+    //align-content: center;
+
+  }
+  //align-items: center;
+  //align-content: center;
+
 }

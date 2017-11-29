@@ -2,9 +2,13 @@
 
 /*------- Chapter 8 ------*/
 
-
+.chap-8 > .chap-text-content > p > span {
+  color: $secondary-color;
+}
 .chap-persons-2 {
-  margin: 0;
+  @media (max-width: map-get($grid-breakpoints, xl)) {
+    margin: 0;
+  }
   display: flex;
 
   justify-content: space-around;
@@ -114,3 +118,25 @@
     justify-content: flex-end;
   }
 }
+
+.chap-banner.chap-8 {
+  background-image: url('../img/chap-8-banner.jpg');
+  height: 60vw;
+}
+
+.chap-8 > .chap-text-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  //align-items: center;
+  //align-content: center;
+  > p {
+    color: $light-grey;
+    &.coordonnees {
+      font-size: 1rem;
+      line-height: 2rem;
+    }
+  }
+}
+
+

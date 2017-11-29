@@ -24,7 +24,7 @@
 
     height: $chap-6-pic-height;
     position: absolute;
-    top: -$chap-6-pic-height / 3;
+    top: $chap-6-pic-top;
 
     background-image: url('../img/chap-6-banner.png');
     background-size: cover;
@@ -34,7 +34,7 @@
 
 .chap-persons {
   position: absolute;
-  top: $chap-6-pic-height * 2 / 3 - $chap-6-persons-offset;
+  top: $chap-6-persons-top;
   margin: 0;
   display: flex;
 
