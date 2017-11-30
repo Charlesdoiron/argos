@@ -46,7 +46,12 @@ let carouselContentObjects = [
   Entré dans le Groupe Total en 1994, Il occupe plusieurs postes en expatriation, notamment au Venezuela, au Myanmar, au Cameroun, au Nigeria et dernièrement aux Emirats-Arabes-Unis en tant que Field Opérations Manager.<br><br>
   « Travaillant au service exploitation de Total, je me considère comme un potentiel futur client. Je serai donc très attentif à l’évolution de ces solutions robotiques. Le robot ARGOS doit avant tout renforcer la sécurité des opérateurs et permettre de gagner en efficacité. »`
 },
-
+{
+  name: `Laurent Chiabotto`,
+  text: `Laurent Chiabotto est Chef du Département Méthodes au sein de Total Exploration-Production à Pau. Il est en charge de sujets transverses comme le Système de Management de l’Exploitation, les données et Solutions Métiers ou encore les Opérations pour le futur. <br>
+  Entré dans le Groupe Total en 1994, Il occupe plusieurs postes en expatriation, notamment au Venezuela, au Myanmar, au Cameroun, au Nigeria et dernièrement aux Emirats-Arabes-Unis en tant que Field Opérations Manager.<br><br>
+  « Travaillant au service exploitation de Total, je me considère comme un potentiel futur client. Je serai donc très attentif à l’évolution de ces solutions robotiques. Le robot ARGOS doit avant tout renforcer la sécurité des opérateurs et permettre de gagner en efficacité. »`
+}
 ];
 
 
@@ -54,12 +59,18 @@ let carouselContentObjects = [
 
 
 let currentDisplayedIndex;
+  let carouselMoving;
+
 
 
 carouselContentObjects.forEach(object => {
 
   const carouselSubcontainer = document.createElement('div');
   carouselSubcontainer.classList.add('chap-5-bis-text-carousel-subcontainer');
+  carouselSubcontainer.classList.add('mr-4');
+  if (carouselContentObjects.indexOf(object) === carouselContentObjects.length - 1) {
+    carouselSubcontainer.id = `last-container`;
+  }
   carousel5BisContainer.appendChild(carouselSubcontainer);
 
   const carouselDisplayNumber = document.createElement('p');
@@ -75,7 +86,7 @@ carouselContentObjects.forEach(object => {
 
 });
 
-buttonsToClick[0].style.backgroundColor = '#DF0C36';
+buttonsToClick[0].classList.add('active')
 
 // function initCarousel (index) {
 //   currentDisplayedIndex = index;
@@ -86,15 +97,14 @@ buttonsToClick[0].style.backgroundColor = '#DF0C36';
 // /*---------- IF CLICKED ON THE ARROWS ---------------*/
 
 function clickingSomewhere (e) {
-
-  console.log(e.target)
-
+  window.cancelAnimationFrame(carouselMoving);
   //Variables spécifiques
   const arrowClicked = e.target;
   const currentScrolled = carousel5BisContainer.scrollLeft;
-  const widthOfSubcontainer = window.getComputedStyle(carousel5BisContainer).getPropertyValue('width').replace('px', '');
-  const carouselContainerMaxScroll  = Math.floor(widthOfSubcontainer * (carouselContentObjects.length - 1));
+  const widthOfSubcontainer = parseFloat(window.getComputedStyle(carousel5BisContainer.firstElementChild).getPropertyValue('width').replace('px', '')) + parseFloat(window.getComputedStyle(carousel5BisContainer.firstElementChild).getPropertyValue('margin-right').replace('px', ''));
+  const carouselContainerMaxScroll  = Math.floor(widthOfSubcontainer * (carouselContentObjects.length - 2));
   const previousIndex = Math.floor(currentScrolled / widthOfSubcontainer);
+  const currentDisplayedIndex = Math.floor(currentScrolled / Math.floor(widthOfSubcontainer));
 
   //Variables scrolling animation
   const timeScale = 50;
@@ -104,7 +114,6 @@ function clickingSomewhere (e) {
   let scrolled;
   let toScroll;
   let newScrollPosition;
-  let carouselMoving;
 
   //Define if need to scroll and to where need to scroll
   //Define newScrollPosition and toScroll
@@ -115,21 +124,30 @@ function clickingSomewhere (e) {
     const previousScroll = Math.floor(clickedIndex * widthOfSubcontainer);
     const remainingScroll = previousScroll - carousel5BisContainer.scrollLeft;
     buttonsToClick.forEach(button => {
-      (button.dataset.button === arrowClicked.dataset.button) ? button.style.backgroundColor = '#DF0C36' : button.style.backgroundColor = 'rgba(240,240,240,0.6)';
+      (button.dataset.button === arrowClicked.dataset.button) ? button.classList.add('active') : (button.classList.contains('active') ? button.classList.remove('active') : '');
     })
     newScrollPosition = previousScroll;
     toScroll = remainingScroll;
     animateScrolling ();
   } else if (arrowClicked === arrowRightChap5Bis) {
-    const nextIndex = (previousIndex === 0 ? 1 : Math.ceil(currentScrolled / widthOfSubcontainer));
+    const nextIndex = currentDisplayedIndex + 1;
     const nextScroll = (currentScrolled === Math.floor(nextIndex * widthOfSubcontainer) ? Math.floor((nextIndex + 1) * widthOfSubcontainer) : Math.floor(nextIndex * widthOfSubcontainer));
     const remainingScroll = nextScroll - carousel5BisContainer.scrollLeft;
+    buttonsToClick.forEach(button => {
+      (parseInt(button.dataset.button) - 1 === nextIndex) ? button.classList.add('active') : (button.classList.contains('active') ? button.classList.remove('active') : '');
+    })
     newScrollPosition = nextScroll;
     toScroll = remainingScroll;
     animateScrolling ();
   } else if (arrowClicked === arrowLeftChap5Bis) {
     const previousScroll = Math.floor(previousIndex * widthOfSubcontainer);
     const remainingScroll = previousScroll - carousel5BisContainer.scrollLeft;
+    console.log(`previousIndex: ${previousIndex}`);
+    buttonsToClick.forEach(button => {
+      console.log(`previousIndex: ${previousIndex}`);
+      console.log(`parseInt(button.dataset.button): ${parseInt(button.dataset.button)}`);
+      (parseInt(button.dataset.button) - 1 === previousIndex) ? button.classList.add('active') : (button.classList.contains('active') ? button.classList.remove('active') : '');
+    })
     newScrollPosition = previousScroll;
     toScroll = remainingScroll;
     animateScrolling ();
