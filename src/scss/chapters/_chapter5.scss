@@ -167,7 +167,7 @@
     > li {
       @include size($chap1-carousel-dot-link-diameter);
       border-radius: 50%;
-      background-color: $thumbnail-filter-color;
+      background-color: $light-grey;
       cursor: pointer;
     }
 

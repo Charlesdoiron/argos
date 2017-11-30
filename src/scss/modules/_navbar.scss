@@ -1,107 +1,127 @@
 .navbar {
+<<<<<<< HEAD
     height: 90px;
     background-color: transparent;
     line-height: 90px;
     position: fixed;
     top: -50%;
     width: 100%;
+=======
+  height: 70px;
+  background-color: rgba(235,235,235,0.5);
+  line-height: 90px;
+  position: fixed;
+  top: -50%;
+  width: 100%;
+>>>>>>> 29c9538aa5668bb6899b690202c0dabf14a05404
 }
 
 .appearNav {
-    z-index: 26;
-    top: 0;
-    transition: all 2s;
+  z-index: 26;
+  top: 0;
+  transition: all 2s;
 }
 .burger {
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-image: url("../img/burger.svg");
-    float: right;
-    margin-right: 35px;
-    margin-top: 30px;
-    height: 25px;
-    width: 50px;
-    position: relative;
-    cursor: pointer;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-image: url("../img/burger.svg");
+  float: right;
+  margin-right: 35px;
+  margin-top: 20px;
+  height: 25px;
+  width: 50px;
+  position: relative;
+  cursor: pointer;
 }
 
 .burger-is-open {
-    background-image: url("../img/burger-is-open.svg");
-    background-repeat: no-repeat;
-    background-size: contain;
-    float: right;
-    margin-right: 25px;
-    margin-top: 25px;
-    height: 35px;
-    width: 50px;
-    position: relative;
-    cursor: pointer;
+  background-image: url("../img/burger-is-open.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  float: right;
+  margin-right: 25px;
+  margin-top: 15px;
+  height: 35px;
+  width: 50px;
+  position: relative;
+  cursor: pointer;
 }
 
 .volet {
-    height: 100vh;
-    width: 100%;
-    background-color: $black-russian;
-    position: absolute;
-    z-index: 23;
+  height: 100vh;
+  width: 100%;
+  background-color: $black-russian;
+  position: absolute;
+  z-index: 23;
 }
 
 /*MENU*/
 
 .menu {
-    height: 100vh;
-    background-color: $secondary-color;
-    padding-top: 4vh;
-    width: 50vw;
-    transition: all 2s;
-    transition-timing-function: ease;
-    transition-duration: 2s;
-    transform: translateX(200%);
-    position: fixed;
-    padding-top: 15vh;
-    z-index: 25;
-    li{
-        list-style: none;
-        text-transform: uppercase;
-        text-align: right;
-        margin-right: 90px;
-        line-height: 9vh;
-        font-size: 30px;
-     a {
-        color: #FFF;
-        transition: all 1s;
+  height: 100vh;
+  background-color: $secondary-color;
+  padding-top: 4vh;
+  width: 50vw;
+  min-width: 310px;
+  max-width: 600px;
+  // width: 50vh;
+  transition: all 1s ease;
+  // transition-timing-function: ease;
+  // transition-duration: 2s;
+  transform: translateX(100vw);
+  position: fixed;
+  padding-top: 15vh;
+  z-index: 25;
+  ul {
+    padding: 0;
+  }
+  li{
+    list-style: none;
+    text-transform: uppercase;
+    text-align: right;
+    margin-right: 15%;
+    line-height: 9vh;
+    font-size: 1em;
+    @media (min-width: map-get($grid-breakpoints, lg)) {
+    font-size: 1.5em;
+    }
+    @media (min-width: map-get($grid-breakpoints, xl)) {
+    font-size: 1.75em;
+    }
+    a {
+      color: #FFF;
+      // transition: all 1s;
     }
     a:hover{
-        text-decoration: none !important;
-        letter-spacing: 1px;
-        transition: all 1s;
+      text-decoration: none !important;
+      letter-spacing: 1px;
+      // transition: all 1s;
     }
-    }
+  }
 
 }
 .menu.is-active {
-    transition: all 2s;
-    transform: translateX(100%);
+  transition: all 1s;
 }
 
 .social{
-    color: #FFF;
-    text-align: center;
-    display: flex;
-    justify-content: space-evenly;
-    width: 60%;
-    margin: 0 auto;
+  color: #FFF;
+  text-align: center;
+  display: flex;
+  justify-content: space-evenly;
+  width: 60%;
+  margin: 0 auto;
 }
 .toTop{
-        position: fixed;
-    bottom: 0;
-    right: 0;
-    z-index: 21;
-      cursor: pointer;
-    margin-bottom: 25px;
-    margin-right:20px;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  z-index: 21;
+  cursor: pointer;
+  margin-bottom: 25px;
+  margin-right:20px;
+  color: #000;
+  a{
     color: #000;
-    a{
-        color: #000;
-    }
+  }
 }

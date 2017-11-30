@@ -1059,21 +1059,35 @@ window.addEventListener('load', () => {
 	const burger = document.querySelector('.burger');
 	const menu = document.querySelector('.menu');
 	const navbar = document.querySelector('.navbar');
-	
-	burger.addEventListener('click', () => {
-		if(burger.classList.contains('burger')){
-			burger.classList.remove('burger')
-			menu.classList.add('is-active')
-			burger.classList.add('burger-is-open')
-		}else{
-			burger.classList.remove('burger-is-open')
-			menu.classList.remove('is-active')
-			burger.classList.add('burger')
-		}
-	})
+  let distanceMenuToTranslate;
 
+	function toggleMenu () {
+		if (burger.classList.contains('burger')) {
+			burger.classList.remove('burger');
+			menu.classList.add('is-active');
+			burger.classList.add('burger-is-open');
+      recalculateTranslation();
+		} else {
+			burger.classList.remove('burger-is-open');
+			menu.classList.remove('is-active');
+			burger.classList.add('burger');
+      recalculateTranslation();
+		};
+	}
 
+function recalculateTranslation () {
 
+  const windowWidth = window.innerWidth;
+  const menuWidth = window.getComputedStyle(menu).getPropertyValue('width').replace('px', '');
+  if (menu.classList.contains('is-active')) {
+  menu.style.transform = `translateX(${windowWidth - menuWidth}px)`
+  } else {
+  menu.style.transform = `translateX(${windowWidth}px)`
+  }
+}
+burger.addEventListener('click', toggleMenu);
+window.addEventListener('resize', recalculateTranslation);
+window.addEventListener('load', recalculateTranslation);
 // SMOOTH
 
 
