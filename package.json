@@ -17,6 +17,7 @@
     "dragscroll": "0.0.8",
     "file-loader": "^1.1.5",
     "flickity": "^2.0.10",
+    "heroku": "^0.2.0",
     "imagemin": "^5.3.1",
     "insane": "^2.6.2",
     "jsonp": "^0.2.1",
