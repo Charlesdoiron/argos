@@ -25,47 +25,47 @@ let counterScroll;
 let carouselContentObjects = [
 {
   date: `Décembre 2013`,
-  pictureUrl: `../src/img/chap-1-carouselpic-1.jpg`,
+  pictureUrl: `./src/img/chap-1-carouselpic-1.jpg`,
   description: `Lancement de l’appel à projet international`
 },
 {
   date: `Juin 2014`,
-  pictureUrl: `../src/img/chap-1-carouselpic-2.jpg`,
+  pictureUrl: `./src/img/chap-1-carouselpic-2.jpg`,
   description: `Sélection des cinq équipes parmi 31 dossiers de candidature`
 },
 {
   date: `Septembre 2014`,
-  pictureUrl: `../src/img/chap-1-carouselpic-3.jpg`,
+  pictureUrl: `./src/img/chap-1-carouselpic-3.jpg`,
   description: `Lancement officiel du Challenge ARGOS`
 },
 {
   date: `Septembre 2014`,
-  pictureUrl: `../src/img/chap-1-carouselpic-4.jpg`,
+  pictureUrl: `./src/img/chap-1-carouselpic-4.jpg`,
   description: `Réunions techniques et visite du site de compétition avec les équipes sélectionnées`
 },
 {
   date: `Avril 2015`,
-  pictureUrl: `../src/img/chap-1-carouselpic-5.jpg`,
+  pictureUrl: `./src/img/chap-1-carouselpic-5.jpg`,
   description: `Semaine d’entraînement sur le site de compétition à Lacq (Sud Ouest de la France)`
 },
 {
   date: `Juin 2015`,
-  pictureUrl: `../src/img/chap-1-carouselpic-6.jpg`,
+  pictureUrl: `./src/img/chap-1-carouselpic-6.jpg`,
   description: `1ère compétition : des résultats prometteurs en navigation autonome`
 },
 {
   date: `Avril 2016`,
-  pictureUrl: `../src/img/chap-1-carouselpic-7.jpg`,
+  pictureUrl: `./src/img/chap-1-carouselpic-7.jpg`,
   description: `2ème compétition : confronter les robots à la réalité du terrain`
 },
 {
   date: `Mars 2017`,
-  pictureUrl: `../src/img/chap-1-carouselpic-8.jpg`,
+  pictureUrl: `./src/img/chap-1-carouselpic-8.jpg`,
   description: `3ème compétition : opérer en toute sécurité sur un site industriel`
 },
 {
   date: `Mai 2017`,
-  pictureUrl: `../src/img/chap-1-carouselpic-9.jpg`,
+  pictureUrl: `./src/img/chap-1-carouselpic-9.jpg`,
   description: `Remise des trophées. ARGONAUTS (Autriche/Allemagne) remporte le Challenge`
 },
 

@@ -56,8 +56,11 @@
   animation-timing-function: ease;
   animation-name: pulsateArea;
   animation-duration: 7s;
-
   animation-iteration-count: infinite;
+      @media (max-width: map-get($grid-breakpoints, md)) {
+    display: none;
+  }
+
 }
 
 @keyframes pulsateArea {
@@ -70,6 +73,7 @@
   100% {
     transform: scale(0.5);
   }
+
 }
 
 
