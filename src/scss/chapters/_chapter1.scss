@@ -58,6 +58,7 @@
   line-height: 1em;
   color: $main-color;
   transition: all $transition-duration ease-in-out;
+  cursor: pointer;
 
   @media (min-width: map-get($grid-breakpoints, lg)) {
    padding-right: map-get($spacers, 5);

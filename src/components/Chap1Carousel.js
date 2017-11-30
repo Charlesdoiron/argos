@@ -66,7 +66,7 @@ let carouselContentObjects = [
 {
   date: `Mai 2017`,
   pictureUrl: `../src/img/chap-1-carouselpic-9.jpg`,
-  description: `Cérémonie de remise des trophées. ARGONAUTS (Autriche/Allemagne) remporte le Challenge ARGOS`
+  description: `Remise des trophées. ARGONAUTS (Autriche/Allemagne) remporte le Challenge`
 },
 
 ];
