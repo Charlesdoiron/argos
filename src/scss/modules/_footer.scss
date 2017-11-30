@@ -1,47 +1,67 @@
 footer {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  //align-content: center;
-
-  > * {
-    text-decoration: none;
-    color: $white;
-  }
-  height: 250px;
-  width: 100%;
-  background-color: $secondary-color;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center; //align-content: center;
+    >* {
+        text-decoration: none;
+        color: $white;
+    }
+    height: 250px;
+    width: 100%;
+    background-color: $secondary-color;
 }
 
 .social-links {
-  display: flex;
+    display: flex;
 
-  justify-content: space-between;
-  //align-items: center;
-  //align-content: center;
-
+    justify-content: space-between; //align-items: center;
+    //align-content: center;
 }
 
 .social-link {
-  cursor: pointer;
+    cursor: pointer;
+    transition: color 2s;
+    @media (max-width: map-get($grid-breakpoints, md)) {
+
+        font-size: 7px;
+        margin-bottom: 0;
+        padding:0;
+    }
+}
+
+.social-link>a:hover {
+    transition: color 2s;
+    color: #ff3e3e;
 }
 
 .copyright {
-  font-size: 0.75em;
-  letter-spacing: 2px;
+    font-size: 0.55em;
+    letter-spacing: 2px;
+    color: #a90022 !important;
 }
 
 .signature {
-  width: 100%;
-  display: flex;
+    width: 100%;
+    display: flex;
 
-  justify-content: flex-end;
+    justify-content: flex-end;
 
-  > * {
-    color: $white;
-  }
-  //align-items: center;
-  //align-content: center;
+    @media (max-width: map-get($grid-breakpoints, md)) {
+        justify-content: center;
+    }
 
+    >*,
+    a:hover {
+        color: $white;
+    } //align-items: center;
+    //align-content: center;
+}
+
+.logo-footer {
+    @media (max-width: map-get($grid-breakpoints, md)) {
+        width: 30%;
+        height: auto;
+        margin-top: 0;
+    }
 }

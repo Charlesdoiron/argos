@@ -1,6 +1,10 @@
 .bio {
   margin-top: -$bio-boss-pic-diameter / 2;
+   @media (max-width: map-get($grid-breakpoints, md)) {
+    padding:20px;
+  }
 }
+
 
 .bio-boss-picture {
   display: flex;

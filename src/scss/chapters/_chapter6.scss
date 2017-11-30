@@ -18,7 +18,7 @@
   align-items: center;
   align-content: center;
 
-  background-color: $white;
+  /*background-color: $white;*/
 
   > .chap-pic {
 
@@ -26,7 +26,7 @@
     position: absolute;
     top: $chap-6-pic-top;
 
-    background-image: url('../img/chap-6-banner.png');
+    background-image: url('../img/chap-6-banner.jpg');
     background-size: cover;
 
   }

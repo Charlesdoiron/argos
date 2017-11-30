@@ -1,19 +1,12 @@
 .navbar {
-<<<<<<< HEAD
-    height: 90px;
-    background-color: transparent;
-    line-height: 90px;
-    position: fixed;
-    top: -50%;
-    width: 100%;
-=======
+
   height: 70px;
-  background-color: rgba(235,235,235,0.5);
+  background-color: transparent;
   line-height: 90px;
   position: fixed;
   top: -50%;
   width: 100%;
->>>>>>> 29c9538aa5668bb6899b690202c0dabf14a05404
+
 }
 
 .appearNav {
@@ -26,7 +19,7 @@
   background-size: contain;
   background-image: url("../img/burger.svg");
   float: right;
-  margin-right: 35px;
+  margin-right: 20px;
   margin-top: 20px;
   height: 25px;
   width: 50px;

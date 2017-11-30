@@ -74,14 +74,17 @@
 
   transition: all 1s;
 
-  height: 120px;
+  height: 90px;
   background-color: $body-background-color;
   color: $chapter-text-content;
   font-family: 'Lato';
-  font-size: 1.25em;
+  font-size: 1.2em;
   font-weight: 300;
   @media (min-width: map-get($grid-breakpoints, xl)) {
-    font-size: 1.38em;
+    font-size: 1.2em;
+  }
+  span{
+    font-size: 0.9em;
   }
 }
 

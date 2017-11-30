@@ -7,12 +7,14 @@
 
   > .chap-numbers {
     display: flex;
-
-    justify-content: space-between;
+    justify-content: space-around;
 
     >.chap-number-card {
       display: flex;
       flex-direction: column;
+      min-width: 250px;
+    max-height: 250px;
+    max-width: 250px;
 
       justify-content: space-between;
       align-items: center;
@@ -26,9 +28,8 @@
         align-items: center;
         //align-content: center;
 
-        height: $chap-number-card-height *2 / 3;
         font-family: 'Museo 700';
-        font-size: 200px;
+        font-size: 90px;
         font-weight: 500;
         color: $main-color;
       }
