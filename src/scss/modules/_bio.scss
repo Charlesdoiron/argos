@@ -67,8 +67,14 @@
   font-style: italic;
 }
 
-.bio-content-first-part {
-}
+.bio.banner {
+  padding: 0;
+  background-image: url('../img/argos-retrospective.jpg');
+  color: $light-grey;
+  display: flex;
 
-.bio-content-second-part {
+  justify-content: center;
+  align-items: center;
+  //align-content: center;
+  opacity: 0.8;
 }
