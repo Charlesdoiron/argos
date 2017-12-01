@@ -82,10 +82,14 @@ chapterTitles.forEach(chapterTitle => {
     function recalculatePaddingCarousel () {
       const carouselFirstThumbnail = document.querySelector('#first-thumbnail');
       const carouselLastThumbnail = document.querySelector('#last-thumbnail');
-      const thumbnailWidth = Math.round(parseFloat(window.getComputedStyle(carouselFirstThumbnail).getPropertyValue('width').replace('px', '')) * 100 / window.innerWidth);
-      const carouselMargin = (100 - thumbnailWidth) / 2;
-      carouselFirstThumbnail.style.marginLeft = `${carouselMargin}vw`;
-      carouselLastThumbnail.style.marginRight = `${carouselMargin}vw`;
+      const documentWidth = window.getComputedStyle(document.querySelector('.chap-container')).getPropertyValue('width').replace('px', '');
+      const thumbnailWidth = Math.round(parseFloat(window.getComputedStyle(carouselFirstThumbnail).getPropertyValue('width').replace('px', '')));
+      const carouselMargin = (documentWidth - thumbnailWidth) / 2;
+      console.log(`documentWidth: ${documentWidth}`);
+      console.log(`thumbnailWidth: ${thumbnailWidth}`);
+      console.log(`carouselMargin: ${carouselMargin}`);
+      carouselFirstThumbnail.style.marginLeft = `${carouselMargin}px`;
+      carouselLastThumbnail.style.marginRight = `${carouselMargin}px`;
     }
 
     recalculatePaddingCarousel ();

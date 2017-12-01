@@ -49,6 +49,7 @@
   display: flex;
   width: 100%;
   margin: 0;
+  flex-wrap: nowrap;
 
   justify-content: space-between;
   align-items: center;
@@ -58,6 +59,8 @@
   > .chap-5-bis-carousel-arrow, {
     display: flex;
     cursor: pointer;
+    padding-left: 10px;
+    padding-right: 10px;
 
     align-content: center;
 
@@ -83,7 +86,7 @@
 .chap-text-5-bis-carousel-container  {
 
   display: inline-flex;
-  width: 80%;
+  flex-grow: 1;
   overflow-x: auto;
 
   -webkit-overflow-scrolling: touch;

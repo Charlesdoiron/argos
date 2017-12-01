@@ -138,10 +138,10 @@ function initCarousel (index) {
 initCarousel(0);
 
 function adaptCarouselToWindowSize() {
-  thumbnailWidth = Math.round(parseFloat(window.getComputedStyle(carouselFirstThumbnail).getPropertyValue('width').replace('px', '')) * 100 / window.innerWidth);
-  dotlinkWidth = Math.round(parseFloat(window.getComputedStyle(document.querySelector('#first-link')).getPropertyValue('width').replace('px', '')) * 100 / window.innerWidth);
-  const vwToPx = window.innerWidth / 100;
-  const newScrollPosition = Math.round(((currentDisplayedIndex - 1) * (thumbnailWidth + dotlinkWidth)) * vwToPx);
+  thumbnailWidth = Math.round(parseFloat(window.getComputedStyle(carouselFirstThumbnail).getPropertyValue('width').replace('px', '')));
+  dotlinkWidth = Math.round(parseFloat(window.getComputedStyle(document.querySelector('#first-link')).getPropertyValue('width').replace('px', '')));
+  const documentWidth = window.getComputedStyle(document.querySelector('.chap-container')).getPropertyValue('width').replace('px', '') / 100;
+  const newScrollPosition = Math.round(((currentDisplayedIndex - 1) * (thumbnailWidth + dotlinkWidth)));
   carouselContainer.scrollLeft = newScrollPosition;
 }
 adaptCarouselToWindowSize();
@@ -174,19 +174,13 @@ function clickingOnThumbnail (e) {
 
 function clickingOnArrow () {
   window.cancelAnimationFrame(carouselMoving);
-  console.log(`clickedIndex-beforeClickArrow: ${clickedIndex}`);
-  console.log(`currentDisplayedIndex-beforeClickArrow: ${currentDisplayedIndex}`);
   if ((this === arrowRightChap1 && currentDisplayedIndex >= carouselThumbnails.length) || (this === arrowLeftChap1 && currentDisplayedIndex <= 1)) {
     return;
   } else if (this === arrowRightChap1) {
-console.log('flèche droite')
     const thumbnailClicked = carouselThumbnails[((clickedIndex === 0 ? currentDisplayedIndex - 1 : clickedIndex - 1)) + 1];
-    console.log(`thumbnailClicked.dataset.thumbnail: ${thumbnailClicked.dataset.thumbnail}`);
     loadCarousel(thumbnailClicked, thumbnailClicked.dataset.thumbnail);
   } else if (this === arrowLeftChap1) {
-console.log('flèche gauche')
     const thumbnailClicked = carouselThumbnails[((clickedIndex === 0 ? currentDisplayedIndex - 1 : clickedIndex - 1)) - 1];
-    console.log(`thumbnailClicked.dataset.thumbnail: ${thumbnailClicked.dataset.thumbnail}`);
     loadCarousel(thumbnailClicked, thumbnailClicked.dataset.thumbnail);
   }
 }
@@ -225,12 +219,11 @@ function loadCarousel (thumbnailClicked, parameterClickedIndex) {
 
   /*------------ Scroll to the thumbnail -----------------*/
   //0-1 - Get the values from unit vw to px (javascript doesn't understand vw or vh)
-  const vwToPx = window.innerWidth / 100;
+  const documentWidth = window.getComputedStyle(document.querySelector('.chap-container')).getPropertyValue('width').replace('px', '') / 100;
   //0-2 - Get the future final position of the thumbnail scrolling
-  const newScrollPosition = Math.round(((clickedIndex - 1) * (thumbnailWidth + dotlinkWidth)) * vwToPx)
+  const newScrollPosition = Math.round(((clickedIndex - 1) * (thumbnailWidth + dotlinkWidth)))
   //0-3 - Get the total distance to scroll (negative or positive)
   const toScroll = newScrollPosition - carouselContainer.scrollLeft;
-  // console.log(`toScroll: ${toScroll}`);
   //0-4 - This value is actually giving the transitionDuration its real duration. The value is based on the time intervals requestAnimationFrame is called.
   const timeScale = 50;
   //0-5 - Init variable to check if the scrolling is over or not
