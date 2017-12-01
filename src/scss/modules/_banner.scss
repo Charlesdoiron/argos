@@ -25,6 +25,11 @@
     background-repeat: no-repeat;
     background-size: cover;
 
+    &.bio {
+
+    background-size: contain;
+    }
+
     background-position: center;
 }
 

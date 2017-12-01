@@ -3,6 +3,21 @@
 
 /*------- Chapters - Global ------*/
 
+.chap-container {
+  max-width: 1140px;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+
+  // justify-content: center;
+  // align-items: center;
+  //align-content: center;
+
+  > .chap {
+    flex-basis: 100%;
+  }
+}
+
 .chap-title {
   text-transform: uppercase;
   display: flex;
