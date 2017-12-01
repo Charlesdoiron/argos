@@ -663,27 +663,27 @@ let counterScroll;
 let carouselContentObjects = [
 {
   number: `1`,
-  text: `Naviguer et effectuer des rondes d’inspection de manière autonome en toute sécurité et livrer des informations et analyses fiables.`
+  text: `Navigate and perform inspections autonomously in complete safety and deliver reliable information and analyses.`
 },
 {
   number: `2`,
-  text: `Faire face aux événements internes et externes en adoptant le bon comportement : anomalies au point de contrôle, dysfonctionnements internes, arrêts d’urgence, batterie faible, alarmes, obstacles fixes ou mobiles tels que détecter la présence de l’opérateur...`
+  text: `Manage internal and external events correctly: anomalies at inspection point, internal malfunctions, emergency shut-downs, low battery, alarms, static or moving obstacles such as detecting the presence of an operator...`
 },
 {
   number: `3`,
-  text: `Opérer en situation dégradée (perte de la connexion wifi, obstacles inconnus).`
+  text: `Operate in a degraded situation (loss of wifi connection, unknown obstacle detection and navigation).`
 },
 {
   number: `4`,
-  text: `Surveiller l’environnement par l’analyse du bruit de fonctionnement des pompes.`
+  text: `Monitor the environment by analysing the sounds coming from pumps.`
 },
 {
   number: `5`,
-  text: `Démontrer la réactivité du robot : vitesse de programmation, alternance rapide entre le mode autonome et télé-opéré.`
+  text: `Demonstrate the robot's reactivity: programming speed, rapid switch between autonomous mode and teleoperated mode.`
 },
 {
   number: `6`,
-  text: `Développer une interface homme/machine simple d’utilisation et intuitive.`
+  text: `Develop a man-machine interface that is easy to use and intuitive.`
 }
 ];
 
