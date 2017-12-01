@@ -18,57 +18,52 @@ let counterScroll;
 let carouselContentObjects = [
 {
   name: `Laurent Chiabotto`,
-  text: `Laurent Chiabotto est Chef du Département Méthodes au sein de Total Exploration-Production à Pau. Il est en charge de sujets transverses comme le Système de Management de l’Exploitation, les données et Solutions Métiers ou encore les Opérations pour le futur. <br>
-  Entré dans le Groupe Total en 1994, Il occupe plusieurs postes en expatriation, notamment au Venezuela, au Myanmar, au Cameroun, au Nigeria et dernièrement aux Emirats-Arabes-Unis en tant que Field Opérations Manager.<br><br>
-  « Travaillant au service exploitation de Total, je me considère comme un potentiel futur client. Je serai donc très attentif à l’évolution de ces solutions robotiques. Le robot ARGOS doit avant tout renforcer la sécurité des opérateurs et permettre de gagner en efficacité. »`
+  text: `Laurent Chiabotto is Head of the Methods Department at Total Exploration & Production in Pau. He is in charge of cross-functional subjects such as the Field Operations Management System, discipline data and solutions and operations for the future. He joined the Total group in 1994 and worked in different positions as an expatriate, in particular in Venezuela, Myanmar, Cameroon, Nigeria and recently in the United Arab Emirates as Field Operations Manager.
+ "Since I work for the Field Operations department at Total, I consider myself as a potential future client. So I will be following the development of these robotic solutions very closely. The ARGOS robot must first and foremost ramp up safety for operators and boost our efficiency."  
+`
 },
 {
   name: `Etienne Dombre`,
-  text: `Laurent Chiabotto est Chef du Département Méthodes au sein de Total Exploration-Production à Pau. Il est en charge de sujets transverses comme le Système de Management de l’Exploitation, les données et Solutions Métiers ou encore les Opérations pour le futur. <br>
-  Entré dans le Groupe Total en 1994, Il occupe plusieurs postes en expatriation, notamment au Venezuela, au Myanmar, au Cameroun, au Nigeria et dernièrement aux Emirats-Arabes-Unis en tant que Field Opérations Manager.<br><br>
-  « Travaillant au service exploitation de Total, je me considère comme un potentiel futur client. Je serai donc très attentif à l’évolution de ces solutions robotiques. Le robot ARGOS doit avant tout renforcer la sécurité des opérateurs et permettre de gagner en efficacité. »`
+  text: `Etienne Dombre chaired the “Transferts LR” Manufacturing Scientific Committee from 2005 to 2014, a regional agency that promotes technology transfer. He is one of the two French delegates of the International Advanced Robotics program (IARP) whose objective is to encourage and support international cooperation in robotics. He is co-author of eight books and has published about a hundred scientific papers.
+“Innovation and robustness should be the keywords that drive the development of the robots for the next competitions.”`
 },
 {
   name: `Philippe GIRARD `,
-  text: `Philippe Girard est en charge des « Prospective Labs » au sein de la R&D du Groupe Total et à ce titre, s’intéresse aux possibilités de développement de la robotique et des systèmes autonomes complexes  en coordination avec les entités et les responsables de développement de logiciels de pilotage. Ingénieur mécanicien, il apporte au Challenge robotique ARGOS ses connaissances en gestion de l’énergie et des systèmes mécaniques automatisés.
-«  La robotique est un élément important des développements technologiques  devant contribuer à sécuriser et automatiser nos plateformes industrielles. En ce sens, l’initiative de l’EP permet de défricher des domaines nouveaux et nous fera progresser pour mieux définir nos besoins futurs. »
+  text: `Philippe Girard is in charge of the "Prospective Labs" of the Total Group R&D department and as such, is interested in the development possibilities for robotics and complex autonomous systems, in coordination with the entities and with those in charge of developing command-control software. As a mechanics engineer, he brings his knowledge in energy management and automated mechanical systems to the ARGOS Challenge project.
+"Robotics is an important factor in technological developments which should contribute to securing and automating our industrial platforms. In this sense, the E&P initiative helps clear the way for new areas of research and will help us progress to more accurately define our future applications."
 `
 },
 {
   name: `Serge Macrez`,
-  text: `Serge Macrez travaille à la division Technologies de l’Exploration-Production de Total. Il est expert en instrumentation et systèmes de commande-contrôle et a plus de 40 ans d’expérience dans l’industrie de l’automatisation. Il promeut l’utilisation des technologies mobiles ou portatives, nouvelles ou récentes, participe à la mise en œuvre du concept des opérations intégrées et contribue à différents projets de R&D.  
-“ Il est essentiel que les robots soient capables de se déplacer en sécurité et d’éviter des situations préjudiciables pour les opérateurs.”
-`
+  text: `Serge Macrez works in the Technology Division in Total’s Exploration & Production branch. He’s an expert in Instrumentation and Control Systems with over 40 years’ experience in the automation industry. He promotes the use of new or recent mobile and portable technologies and is involved in the implementation of the Integrated Operations concept and in various R&D projects.
+“The results of the first competition revealed that the robots’ mobility and autonomy need to be improved. A key issue will be to demonstrate that the robot can move safely and avoid situations that are harmful to people.”`
 },
 {
   name: `Jean-Paul Monet`,
-  text: `Le lieutenant-colonel Jean-Paul Monet est chef du Groupement Territorial des Sapeurs-Pompiers des  Bouches-du-Rhône. Il gère 13 casernes, 1 000 sapeurs-pompiers (200 à temps-plein ; 800 à mi-temps), assure la protection d’une population de 250 000 habitants. Il est également conseiller départemental et régional CBRNe (Risques de nature chimique, biologique, radiologique, nucléaire ou explosif) pour le Secrétariat Général de la Protection Civile.
-« Je représente la communauté des utilisateurs des services publics. Mon groupement dispose de moyens d’imagerie aérienne, de deux drones aériens légers et d’un drone terrestre ; je considère donc les robots comme des outils stratégiques, au-delà de leurs aspects tendance. »
-`
+  text: `Lieutenant-colonel Jean-Paul Monet is a senior fire officer employed by the Bouches-du-Rhône fire department, France. Managing 13 stations, 1,000 firemen, and protecting a population of 250,000 inhabitants, this assistant chief officer is departmental and regional CBRNe (Chemical Biological Radioactive Nuclear and Explosives) advisor for French civil protection.
+“I’m representing the public service users’ community. My fire department uses aerial imagery, two light UAVs and one UGV, I therefore consider robots as tactical tools, beyond their fashionable aspects.”`
 },
 {
   name: `Claudio Moriconi`,
-  text: `Claudio Moriconi est le délégué Italien de l’International Advanced Robotics Program. Il est aussi directeur du Laboratoire de robotique (UTTEI-ROB) à l’ENEA, récemment rebaptisé IDRA (Distributed Intelligence and Autonomous Robots). Auteur de plusieurs publications internationales et co-auteur de deux ouvrages, relecteur pour les projets de recherche du Ministère italien, il a aussi piloté l’Antarctica Italian Robotics Project ainsi que des dizaines de projets sur la robotique.
-« J’espère que ce challenge nous donnera un nouveau moyen de soutenir la recherche industrielle de pointe dans la communauté éminemment  concurrentielle de la robotique internationale. » 
-`
+  text: `Claudio Moriconi is the italian delegate of the International Advanced Robotics Program. Is the Director of the Robotics Laboratory of ENEA, recently rearranged with the name of IDRA (Distributed Intelligence and Autonomous Robots). He is the author of many international publications, co-author of two books, reviewer of the italian Ministry research projects, leaded more Antarctica Italian Robotics Project and project leader of tens of robotics projects.
+"I expect that this Challenge initiative can address a new way to support the high tech industrial research in the robotics international competition arena."`
 },
 {
   name: `Geoff Pegman`,
-  text: `Geoff Pegman est Directeur Général de RU Robots et un expert avec plus de 26 ans d’expérience dans l’industrie de la robotique avancée. Il est le représentant du Royaume-Uni dans l’International Advanced Robotics Programme, un organisme international qui comprend 15 États membres, et dont il est également Vice-Président.
-« Je m’intéresse beaucoup aux interfaces utilisateur qui sont développées pour chacun de ces robots pour assurer la clarté des informations présentées à l’opérateur, et lui permettre de contrôler facilement le robot. »
+  text: `Geoff Pegman is the Managing Director of R U Robots and is a Chartered Director with over 26 years’ experience of the advanced robotics industry. He is also the UK representative to, and Vice-President of, the International Advanced Robotics Programme, an intergovernmental organization with 15 member states.
+“I am very interested in the user interfaces developed for each of these robots in terms of the clarity of the information that is presented to the operator and the ease with which the operator can command the robot.”
 `
 },
 {
   name: `Pascal Pourcel`,
-  text: `Pascal Pourcel est membre de la division Risques Majeurs au sein de la direction HSE du Groupe TOTAL. Spécialiste de l’ingénierie de sécurité et des études de risques, il fournit l’expertise technique aux projets et filiales, participe à l’élaboration de référentiels et d’outils de calculs internes, et assure des formations aux différentes entités du Groupe.
- « Je souhaite que ce Challenge ARGOS nous permettra de mettre en place des solutions novatrices et sûres, pour le suivi de nos installations, et pour nous assister à l’intervention dans des situations de crises. »
-
+  text: `Pascal Pourcel is a member of the Major Risks division in the Total group HSE Division. He is a specialist in safety engineering and risk assessment, and provides technical expertise to project teams and the affiliates. He also contributes to drafting technical standards and to the development of in-house calculation tools, and gives training courses to different Group entities.
+ "I would like the ARGOS Challenge to provide us with innovative, robust solutions to monitor our installations and to help us deal with crisis situations."
 `
 },
 {
   name: `Pascal Pourcel`,
-  text: `Pascal Pourcel est membre de la division Risques Majeurs au sein de la direction HSE du Groupe TOTAL. Spécialiste de l’ingénierie de sécurité et des études de risques, il fournit l’expertise technique aux projets et filiales, participe à l’élaboration de référentiels et d’outils de calculs internes, et assure des formations aux différentes entités du Groupe.
- « Je souhaite que ce Challenge ARGOS nous permettra de mettre en place des solutions novatrices et sûres, pour le suivi de nos installations, et pour nous assister à l’intervention dans des situations de crises. »
+  text: `Pascal Pourcel is a member of the Major Risks division in the Total group HSE Division. He is a specialist in safety engineering and risk assessment, and provides technical expertise to project teams and the affiliates. He also contributes to drafting technical standards and to the development of in-house calculation tools, and gives training courses to different Group entities.
+ "I would like the ARGOS Challenge to provide us with innovative, robust solutions to monitor our installations and to help us deal with crisis situations."
 
 `
 }
