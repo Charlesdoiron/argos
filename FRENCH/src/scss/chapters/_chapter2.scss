@@ -1,0 +1,54 @@
+/*------- Chapter 2 ------*/
+
+.chap-2 {
+  > .chap-title, .chap-text-content {
+    // background-color: $white;
+  }
+
+  > .chap-numbers {
+    display: flex;
+    justify-content: space-around;
+
+    >.chap-number-card {
+      display: flex;
+      flex-direction: column;
+      min-width: 250px;
+    max-height: 250px;
+    max-width: 250px;
+
+      justify-content: space-between;
+      align-items: center;
+
+      background-color: $white;
+
+      > .chap-number-number {
+        display: flex;
+
+        //justify-content: center;
+        align-items: center;
+        //align-content: center;
+
+        font-family: 'Museo 700';
+        font-size: 90px;
+        font-weight: 500;
+        color: $main-color;
+      }
+
+      > .chap-number-description {
+        display: flex;
+        flex-grow: 1;
+        flex-direction: column;
+        justify-content: center;
+        //align-items: center;
+        //align-content: center;
+
+        text-align: center;
+      }
+    }
+  }
+}
+
+.chap-banner.chap-2 {
+  background-image: url('../img/chap-2-banner.jpg');
+  height: 60vw;
+}

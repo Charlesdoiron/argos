@@ -1,0 +1,15 @@
+
+/*------- Chapter 4 ------*/
+
+.chap4-pic-container {
+  display: flex;
+
+  justify-content: center;
+
+  .chap-pic {
+    height: $chap-6-pic-height;
+    background-image: url('../img/chap-4-banner.jpg');
+    background-size: cover;
+
+  }
+}

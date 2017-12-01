@@ -1,0 +1,206 @@
+
+/*------- Chapter 5 ------*/
+
+.chap-5 {
+  background-color: $white;
+}
+
+.chap-text-carousel-title {
+  display: flex;
+
+  justify-content: center;
+
+  width: 100%;
+  color: $middle-grey;
+  font-size: 2em;
+  line-height: 1.5em;
+  font-weight: 500;
+  text-align: center;
+  text-transform: uppercase;
+
+  &.chap-5-bis {
+    color: $secondary-color;
+    text-transform: none;
+  }
+}
+.chap-5-bis {
+  color: $secondary-color;
+  text-transform: none;
+}
+
+.chap-text-carousel-main-container, {
+  display: flex;
+
+  justify-content: space-between;
+  align-items: center;
+
+  > .chap-5-carousel-arrow, {
+    display: flex;
+    cursor: pointer;
+
+    align-content: center;
+
+    font-size: 7em;
+    font-weight: 100;
+  }
+}
+
+.chap-5-bis-text-carousel-main-container {
+  display: flex;
+  width: 100%;
+  margin: 0;
+  flex-wrap: nowrap;
+
+  justify-content: space-between;
+  align-items: center;
+
+  background-color: $body-background-color;
+
+  > .chap-5-bis-carousel-arrow, {
+    display: flex;
+    cursor: pointer;
+    padding-left: 10px;
+    padding-right: 10px;
+
+    align-content: center;
+
+    font-size: 7em;
+    font-weight: 100;
+  }
+}
+
+.chap-text-carousel-container  {
+  display: inline-flex;
+  width: 500px;
+  overflow-x: auto;
+
+  -webkit-overflow-scrolling: touch;
+  .js & {
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+}
+
+.chap-text-5-bis-carousel-container  {
+
+  display: inline-flex;
+  flex-grow: 1;
+  overflow-x: auto;
+
+  -webkit-overflow-scrolling: touch;
+  .js & {
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+}
+
+
+.chap-5-text-carousel-subcontainer {
+
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+  flex-grow: 0;
+  flex-basis: 100%;
+  background-color: $white;
+
+  > span {
+    color: $middle-grey;
+    font-size: 4em;
+    font-weight: 500;
+  }
+
+  > p {
+    width: 80%;
+    color: $light-grey;
+    text-align: center;
+  }
+}
+
+#last-container {
+  padding: 0;
+  margin: 0;
+  background-color: $body-background-color;
+  color: $body-background-color;
+  border-color: $body-background-color;
+
+  > * {
+    background-color: $body-background-color;
+    color: $body-background-color;
+    border-color: $body-background-color;
+
+  }
+
+}
+
+
+.chap-5-bis-text-carousel-subcontainer {
+  padding: map-get($spacers, 3);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex-shrink: 0;
+  flex-grow: 0;
+  flex-basis: 80%;
+  background-color: $white;
+
+  > p.title {
+    text-align: left;
+    padding-bottom: map-get($spacers, 5);
+    color: $black-russian;
+    font-weight: 500;
+  }
+
+  > p {
+    text-align: left;
+
+    color: $black-russian;
+    text-align: left;
+  }
+}
+
+.container-buttons {
+  display: flex;
+  margin: 0;
+  padding: 0;
+
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  width: 100%;
+  background-color: $body-background-color;
+  > ul {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    list-style: none;
+
+    justify-content: space-between;
+
+    > li {
+      @include size($chap1-carousel-dot-link-diameter);
+      border-radius: 50%;
+      background-color: $light-grey;
+      cursor: pointer;
+
+      &.active {
+        background-color: $secondary-color;
+
+      }
+    }
+
+    //justify-content: center;
+    //align-items: center;
+    //align-content: center;
+
+  }
+  //align-items: center;
+  //align-content: center;
+
+}

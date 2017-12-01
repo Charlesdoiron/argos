@@ -1,0 +1,84 @@
+.bio {
+  margin-top: -$bio-boss-pic-diameter / 2;
+   @media (max-width: map-get($grid-breakpoints, md)) {
+    padding:20px;
+  }
+}
+
+
+.bio-boss-picture {
+  display: flex;
+
+
+  justify-content: center;
+  > img {
+    border-radius: 50%;
+    width: $bio-boss-pic-diameter;
+    height: $bio-boss-pic-diameter;
+  }
+}
+
+.bio-whoiswho {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+
+  @media (min-width: map-get($grid-breakpoints, sm)) {
+    margin-top: -20px;
+  }
+
+  > span {
+    display: block;
+  }
+}
+
+.bio-boss-name {
+  color: $main-color;
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: 1.2px;
+}
+
+.bio-boss-job-title {
+  font-style: italic;
+  font-size: 20px;
+  line-height: 20px;
+}
+
+.guillemet {
+  display: flex;
+  justify-content: flex-start;
+
+  > svg {
+    height: 50px;
+    > * {
+      fill: $main-color;
+    }
+  }
+
+
+  &.guillemet-fin {
+    justify-content: flex-end;
+    @media (min-width: map-get($grid-breakpoints, xl)) {
+      justify-content: flex-start;
+    }
+  }
+}
+
+.bio-content {
+  display: flex;
+  justify-content: space-around;
+  font-style: italic;
+}
+
+.bio.banner {
+  padding: 0;
+  background-image: url('../img/argos-retrospective.jpg');
+  color: $light-grey;
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+  //align-content: center;
+  opacity: 0.8;
+}

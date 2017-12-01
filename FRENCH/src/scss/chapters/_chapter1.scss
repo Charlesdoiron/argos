@@ -1,0 +1,153 @@
+/*------- Chapter 1 ------*/
+
+.chap-1 {
+  background-color: $white;
+}
+
+.chap-1-carousel-display {
+  display: flex;
+
+  justify-content: space-between;
+  align-items: center;
+  // margin-bottom: 700px;
+}
+
+.chap-1-carousel-pic-display {
+  position: relative;
+  width: $chap1-carousel-pic-display-width;
+  max-width: $chap1-carousel-pic-display-max-width;
+  height: 0.78 * $chap1-carousel-pic-display-width;
+  max-height: 0.78 * $chap1-carousel-pic-display-max-width;
+  background-size: cover;
+}
+
+.chap-1-carousel-desc-display {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 75%;
+  left: -5%;
+  width: 240px;
+  height: 120px;
+  padding-right: map-get($spacers, 3);
+  padding-left: map-get($spacers, 3);
+
+  @media (min-width: map-get($grid-breakpoints, sm)) {
+    top: 56.5%;
+    left: -11.54%;
+    width: 350px;
+    height: 200px;
+    padding: 0;
+  }
+
+  background-color: $white;
+
+  > p {
+    text-align: center;
+    color: $main-color;
+  }
+
+  box-shadow: 0 2px 50px $light-grey;
+}
+
+.chap-1-carousel-arrow {
+  display: flex;
+  font-size: 5em;
+  font-weight: 100;
+  line-height: 1em;
+  color: $main-color;
+  transition: all $transition-duration ease-in-out;
+  cursor: pointer;
+
+  @media (min-width: map-get($grid-breakpoints, lg)) {
+   padding-right: map-get($spacers, 5);
+   padding-left: map-get($spacers, 5);
+ }
+}
+
+.chap-1-carousel-thumbnails-container {
+  overflow-x: hidden;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  white-space: nowrap;
+  .js & {
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+}
+
+.chap-1-carousel-thumbnails {
+  position: relative;
+  padding: 0;
+  margin: 0;
+  display: inline-flex;
+  flex-wrap: nowrap;
+  align-items: center;
+
+}
+
+.carousel-padding {
+  border-top: $chap1-link-line-thickness solid $main-color;
+  // height: ($chap1-carousel-thumbnail-height + $chap1-link-line-thickness) / 2;
+  position: absolute;
+  bottom: 0;
+
+  width: 100%;
+  z-index: 10;
+}
+
+.carousel-thumbnail-pic {
+  z-index: 20;
+  width: $chap1-carousel-thumbnail-width;
+  max-width: $chap1-carousel-thumbnail-max-width;
+  height: $chap1-carousel-thumbnail-height;
+  max-height: $chap1-carousel-thumbnail-max-height;
+  background-image: url('https://picsum.photos/1300/280/?random');
+  background-size: cover;
+  cursor: pointer;
+}
+
+
+.thumbnail-filter {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  //align-items: center;
+  align-content: center;
+  > span {
+  color: $black-russian;
+   width: 100%;
+   background-color: $white;
+   text-align: center;
+   text-transform: uppercase;
+  }
+  height: 100%;
+  width: 100%;
+  background-color: $thumbnail-filter-color;
+  &.active {
+    background: none;
+  }
+}
+
+.carousel-thumbnail-link {
+  padding: 0 !important;
+  margin: 0 !important;
+  width: 5 * $chap1-carousel-dot-link-diameter;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+
+.carousel-link-dot {
+  @include size($chap1-carousel-dot-link-diameter);
+  max-width: $chap1-carousel-dot-link-max-diameter;
+  max-height: $chap1-carousel-dot-link-max-diameter;
+  border-radius: 50%;
+  background-color: $main-color;
+}
+

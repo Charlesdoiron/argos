@@ -1,0 +1,56 @@
+
+/*------- Chapter 3 ------*/
+
+.chap-classic-pic-desc {
+  display: flex;
+  flex-direction: row;
+
+  align-items: center;
+  align-content: center;
+
+  &:nth-of-type(2n) {
+    flex-direction: row-reverse;
+    background-color: $white;
+  }
+}
+
+.chap-classic-pic {
+  height: $chap-3-classic-pic-height;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-size: contain;
+  background-repeat: no-repeat;
+
+
+  opacity:0;
+  transition:all .5s;
+}
+
+.chap-classic-desc {
+  opacity:0;
+  transition:all .5s;
+}
+
+
+.slider-left {
+  transform:translateX(-30%) scale(0.95);
+  background-position: center;
+  @media (min-width: map-get($grid-breakpoints, md)) {
+  background-position: left;
+  }
+}
+.slider-right {
+  transform:translateX(30%) scale(0.95);
+  background-position: center;
+  @media (min-width: map-get($grid-breakpoints, md)) {
+  background-position: right;
+  }
+}
+
+.active {
+  opacity:1;
+  transform:translateX(0%) scale(1);
+}

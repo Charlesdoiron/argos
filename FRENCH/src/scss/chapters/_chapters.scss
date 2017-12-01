@@ -1,0 +1,48 @@
+/* ----- HTML Elements -------*/
+
+
+/*------- Chapters - Global ------*/
+
+.chap-container {
+  // border: 1px solid #000;
+  max-width: 1140px;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+
+  // justify-content: center;
+  // align-items: center;
+  //align-content: center;
+
+  > .chap {
+    flex-basis: 100%;
+  }
+}
+
+.chap-title {
+  text-transform: uppercase;
+  display: flex;
+  flex-direction: column;
+  margin-right: 0;
+  margin-left: 0;
+  //align-item made in DOMStyli
+
+  > * {
+    // max-width: 75%;
+  }
+}
+
+.chap-banner {
+  height: 330px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.chap-banner-description {
+  margin-top: -60px;
+  background-color: $white;
+  > * {
+    color: $main-color;
+  }
+}
